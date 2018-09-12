@@ -11,6 +11,11 @@
 *.userprefs
 
 *.config
+PuntoDeVenta\App.config
+App.config
+PuntoDeVenta/App.config
+PuntoDeVenta\PuntoDeVenta\App.config
+PuntoDeVenta/PuntoDeVenta/App.config
 
 # Build results
 [Dd]ebug/
