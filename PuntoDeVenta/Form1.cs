@@ -16,11 +16,11 @@ namespace PuntoDeVenta
         {
             InitializeComponent();
 
-            using (var context = new ModelDB.ModelConfigApp()) {
+            /*using (var context = new ModelDB.ModelConfigApp()) {
                 var dato = context.Configuracion.SqlQuery("SELECT * FROM Configuracion").First<ModelDB.Configuracion>();
 
                 MessageBox.Show(dato.NombreEmpresa);
-            }
+            }*/
         }
     }
 }
