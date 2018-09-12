@@ -22,5 +22,10 @@ namespace PuntoDeVenta
                 MessageBox.Show(dato.NombreEmpresa);
             }*/
         }
+
+        private void Form1_Load(object sender, EventArgs e) //Git hub, Punto de venta.
+        {
+
+        }
     }
 }
