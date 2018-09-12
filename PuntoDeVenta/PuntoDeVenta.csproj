@@ -114,6 +114,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.config" />
     <None Include="ModelDB\ModeloDB.edmx.diagram">
       <DependentUpon>ModeloDB.edmx</DependentUpon>
     </None>

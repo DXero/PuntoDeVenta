@@ -16,11 +16,11 @@ namespace PuntoDeVenta
         {
             InitializeComponent();
 
-            /*using (var context = new ModelDB.ModeloDB()) {
+            using (var context = new ModelDB.ModeloDB()) {
                 var dato = context.Configuracion.SqlQuery("SELECT * FROM Configuracion").First<ModelDB.Configuracion>();
 
                 MessageBox.Show(dato.NombreEmpresa);
-            }*/
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) //Git hub, Punto de venta.
