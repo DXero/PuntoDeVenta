@@ -129,9 +129,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Proveedores\" />
     <Folder Include="Usuarios\" />
   </ItemGroup>
