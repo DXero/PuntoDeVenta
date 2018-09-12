@@ -110,7 +110,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="NombreEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="campo" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="ModeloDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Contexto" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
           <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
@@ -121,7 +121,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sistemaModelStoreContainer" CdmEntityContainer="ModeloDB">
+        <EntityContainerMapping StorageEntityContainer="sistemaModelStoreContainer" CdmEntityContainer="Contexto">
           <EntitySetMapping Name="CLIENTES">
             <EntityTypeMapping TypeName="sistemaModel.CLIENTES">
               <MappingFragment StoreEntitySet="CLIENTES">
