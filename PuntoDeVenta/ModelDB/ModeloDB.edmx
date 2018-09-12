@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sistemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sistemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CLIENTES">
           <Key>
             <PropertyRef Name="id" />
@@ -26,6 +26,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             <PropertyRef Name="NombreEmpresa" />
           </Key>
           <Property Name="NombreEmpresa" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="campo" Type="int" />
         </EntityType>
         <EntityType Name="PROVEEDORES">
           <Key>
@@ -56,12 +57,12 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Configuracion].[NombreEmpresa] AS [NombreEmpresa]
+    [Configuracion].[NombreEmpresa] AS [NombreEmpresa], 
+    [Configuracion].[campo] AS [campo]
     FROM [dbo].[Configuracion] AS [Configuracion]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sistemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -107,6 +108,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             <PropertyRef Name="NombreEmpresa" />
           </Key>
           <Property Name="NombreEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="campo" Type="Int32" />
         </EntityType>
         <EntityContainer Name="ModeloDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
@@ -163,6 +165,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySetMapping Name="Configuracion">
             <EntityTypeMapping TypeName="sistemaModel.Configuracion">
               <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="campo" ColumnName="campo" />
                 <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
               </MappingFragment>
             </EntityTypeMapping>
