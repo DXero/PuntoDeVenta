@@ -113,7 +113,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Clientes\" />
+    <Folder Include="Proveedores\" />
+    <Folder Include="Usuarios\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="ModelDB\ConfigApp.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
