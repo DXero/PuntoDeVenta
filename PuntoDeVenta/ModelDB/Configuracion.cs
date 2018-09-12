@@ -15,5 +15,6 @@ namespace PuntoDeVenta.ModelDB
     public partial class Configuracion
     {
         public string NombreEmpresa { get; set; }
+        public Nullable<int> campo { get; set; }
     }
 }
