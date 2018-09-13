@@ -38,6 +38,7 @@
             this.TextCorreo = new System.Windows.Forms.TextBox();
             this.TextTelefono = new System.Windows.Forms.TextBox();
             this.TextDui = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -132,11 +133,21 @@
             this.TextDui.Size = new System.Drawing.Size(151, 20);
             this.TextDui.TabIndex = 9;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(354, 222);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 49);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Guardar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TextDui);
             this.Controls.Add(this.TextTelefono);
             this.Controls.Add(this.TextCorreo);
@@ -168,5 +179,6 @@
         private System.Windows.Forms.TextBox TextCorreo;
         private System.Windows.Forms.TextBox TextTelefono;
         private System.Windows.Forms.TextBox TextDui;
+        private System.Windows.Forms.Button button1;
     }
 }
