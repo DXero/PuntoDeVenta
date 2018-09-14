@@ -33,12 +33,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_NomEmpresa = new System.Windows.Forms.TextBox();
+            this.txt_Telefono = new System.Windows.Forms.TextBox();
+            this.txt_Correo = new System.Windows.Forms.TextBox();
+            this.txt_Contacto = new System.Windows.Forms.TextBox();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.btn_Guardar = new System.Windows.Forms.Button();
+            this.rb_Si = new System.Windows.Forms.RadioButton();
+            this.rb_No = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -86,65 +88,98 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Contacto:";
             // 
-            // checkBox1
+            // txt_NomEmpresa
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(512, 40);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(42, 21);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Si";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.txt_NomEmpresa.Location = new System.Drawing.Point(219, 37);
+            this.txt_NomEmpresa.MaxLength = 100;
+            this.txt_NomEmpresa.Name = "txt_NomEmpresa";
+            this.txt_NomEmpresa.Size = new System.Drawing.Size(187, 22);
+            this.txt_NomEmpresa.TabIndex = 7;
+            this.txt_NomEmpresa.TextChanged += new System.EventHandler(this.txt_NomEmpresa_TextChanged);
+            this.txt_NomEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_NomEmpresa_KeyPress);
             // 
-            // checkBox2
+            // txt_Telefono
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(598, 40);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 21);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "No";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.txt_Telefono.Location = new System.Drawing.Point(124, 104);
+            this.txt_Telefono.MaxLength = 8;
+            this.txt_Telefono.Name = "txt_Telefono";
+            this.txt_Telefono.Size = new System.Drawing.Size(169, 22);
+            this.txt_Telefono.TabIndex = 8;
+            this.txt_Telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Telefono_KeyPress);
             // 
-            // textBox1
+            // txt_Correo
             // 
-            this.textBox1.Location = new System.Drawing.Point(219, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 22);
-            this.textBox1.TabIndex = 7;
+            this.txt_Correo.Location = new System.Drawing.Point(124, 168);
+            this.txt_Correo.MaxLength = 50;
+            this.txt_Correo.Name = "txt_Correo";
+            this.txt_Correo.Size = new System.Drawing.Size(169, 22);
+            this.txt_Correo.TabIndex = 9;
             // 
-            // textBox2
+            // txt_Contacto
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 104);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 22);
-            this.textBox2.TabIndex = 8;
+            this.txt_Contacto.Location = new System.Drawing.Point(124, 232);
+            this.txt_Contacto.MaxLength = 50;
+            this.txt_Contacto.Name = "txt_Contacto";
+            this.txt_Contacto.Size = new System.Drawing.Size(169, 22);
+            this.txt_Contacto.TabIndex = 10;
+            this.txt_Contacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Contacto_KeyPress);
             // 
-            // textBox3
+            // btn_Cancelar
             // 
-            this.textBox3.Location = new System.Drawing.Point(124, 168);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 22);
-            this.textBox3.TabIndex = 9;
+            this.btn_Cancelar.Location = new System.Drawing.Point(418, 356);
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(204, 60);
+            this.btn_Cancelar.TabIndex = 13;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // btn_Guardar
             // 
-            this.textBox4.Location = new System.Drawing.Point(124, 232);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 22);
-            this.textBox4.TabIndex = 10;
+            this.btn_Guardar.Location = new System.Drawing.Point(170, 356);
+            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Guardar.Name = "btn_Guardar";
+            this.btn_Guardar.Size = new System.Drawing.Size(193, 60);
+            this.btn_Guardar.TabIndex = 12;
+            this.btn_Guardar.Text = "Guardar";
+            this.btn_Guardar.UseVisualStyleBackColor = true;
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
+            // 
+            // rb_Si
+            // 
+            this.rb_Si.AutoSize = true;
+            this.rb_Si.Location = new System.Drawing.Point(512, 40);
+            this.rb_Si.Name = "rb_Si";
+            this.rb_Si.Size = new System.Drawing.Size(41, 21);
+            this.rb_Si.TabIndex = 14;
+            this.rb_Si.TabStop = true;
+            this.rb_Si.Text = "Si";
+            this.rb_Si.UseVisualStyleBackColor = true;
+            // 
+            // rb_No
+            // 
+            this.rb_No.AutoSize = true;
+            this.rb_No.Location = new System.Drawing.Point(559, 40);
+            this.rb_No.Name = "rb_No";
+            this.rb_No.Size = new System.Drawing.Size(47, 21);
+            this.rb_No.TabIndex = 15;
+            this.rb_No.TabStop = true;
+            this.rb_No.Text = "No";
+            this.rb_No.UseVisualStyleBackColor = true;
             // 
             // Proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.rb_No);
+            this.Controls.Add(this.rb_Si);
+            this.Controls.Add(this.btn_Cancelar);
+            this.Controls.Add(this.btn_Guardar);
+            this.Controls.Add(this.txt_Contacto);
+            this.Controls.Add(this.txt_Correo);
+            this.Controls.Add(this.txt_Telefono);
+            this.Controls.Add(this.txt_NomEmpresa);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -164,11 +199,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_NomEmpresa;
+        private System.Windows.Forms.TextBox txt_Telefono;
+        private System.Windows.Forms.TextBox txt_Correo;
+        private System.Windows.Forms.TextBox txt_Contacto;
+        private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_Guardar;
+        private System.Windows.Forms.RadioButton rb_Si;
+        private System.Windows.Forms.RadioButton rb_No;
     }
 }

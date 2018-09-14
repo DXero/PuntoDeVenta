@@ -31,5 +31,70 @@ namespace PuntoDeVenta.Usuarios
         {
 
         }
+
+        private void TextNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras");
+                return;
+            }
+
+        }
+
+        private void TextApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+               e.Handled = true;
+                MessageBox.Show("Solo se permiten letras");
+                return;
+            }
+            
+        }
+
+        private void TextDui_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten numeros");
+                return;
+            }
+        }
+
+        private void TextDui_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten numeros");
+                return;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (TextNombre.Text != "" && TextApellido.Text != "" && TextDui.Text != "" && TextTelefono.Text != "")
+            {
+                  
+            }
+            else MessageBox.Show("Faltan campos por llenar");
+        }
+
+        private void TextNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
     }
 }
