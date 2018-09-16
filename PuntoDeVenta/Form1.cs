@@ -18,7 +18,7 @@ namespace PuntoDeVenta
         {
             InitializeComponent();
 
-            using (var context = new PuntoDeVenta.ModelDB.Contexto()) {
+            using (var context = new ModelDB.Contexto()) {
                 var dato = context.Configuracion.SqlQuery("SELECT * FROM Configuracion").First<ModelDB.Configuracion>();
 
                 MessageBox.Show(dato.NombreEmpresa);
