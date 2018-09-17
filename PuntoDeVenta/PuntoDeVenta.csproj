@@ -101,11 +101,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedores\Eliminar Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedores\Eliminar Proveedores.Designer.cs">
+      <DependentUpon>Eliminar Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedores\Modificar Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedores\Modificar Proveedores.Designer.cs">
+      <DependentUpon>Modificar Proveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Proveedores\Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Proveedores\Proveedores.Designer.cs">
       <DependentUpon>Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\UsuarioModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\UsuarioModificar.Designer.cs">
+      <DependentUpon>UsuarioModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\Usuarios Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\Usuarios Eliminar.Designer.cs">
+      <DependentUpon>Usuarios Eliminar.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\Usuario.cs">
       <SubType>Form</SubType>
@@ -128,8 +152,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Proveedores\Eliminar Proveedores.resx">
+      <DependentUpon>Eliminar Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores\Modificar Proveedores.resx">
+      <DependentUpon>Modificar Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\UsuarioModificar.resx">
+      <DependentUpon>UsuarioModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\Usuarios Eliminar.resx">
+      <DependentUpon>Usuarios Eliminar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Usuario.resx">
       <DependentUpon>Usuario.cs</DependentUpon>
