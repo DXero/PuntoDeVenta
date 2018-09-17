@@ -113,11 +113,34 @@
     <Compile Include="Proveedores\Modificar Proveedores.Designer.cs">
       <DependentUpon>Modificar Proveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Proveedores\Principal Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedores\Principal Proveedores.Designer.cs">
+      <DependentUpon>Principal Proveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Proveedores\Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Proveedores\Proveedores.Designer.cs">
       <DependentUpon>Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sistemaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tabla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabla.Designer.cs">
+      <DependentUpon>Tabla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\Principal Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\Principal Usuarios.Designer.cs">
+      <DependentUpon>Principal Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\UsuarioModificar.cs">
       <SubType>Form</SubType>
@@ -158,8 +181,17 @@
     <EmbeddedResource Include="Proveedores\Modificar Proveedores.resx">
       <DependentUpon>Modificar Proveedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores\Principal Proveedores.resx">
+      <DependentUpon>Principal Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabla.resx">
+      <DependentUpon>Tabla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\Principal Usuarios.resx">
+      <DependentUpon>Principal Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\UsuarioModificar.resx">
       <DependentUpon>UsuarioModificar.cs</DependentUpon>
@@ -188,6 +220,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sistemaDataSet.xsc">
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet.xss">
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
