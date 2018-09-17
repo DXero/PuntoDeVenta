@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace PuntoDeVenta.Proveedores
 {
@@ -54,6 +55,13 @@ namespace PuntoDeVenta.Proveedores
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            bool isValid = regex.IsMatch(txt_Correo.Text.Trim());
+            if (!isValid)
+            {
+                MessageBox.Show("Correo Invalido.");
+            }
+            else { 
             if (txt_NomEmpresa.Text != "" && txt_Telefono.Text != "" && txt_Contacto.Text != "" && txt_Correo.Text != "")
             {
                 try
@@ -72,11 +80,17 @@ namespace PuntoDeVenta.Proveedores
             }
             else MessageBox.Show("Faltan campos por llenar");
 
+            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txt_Correo_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

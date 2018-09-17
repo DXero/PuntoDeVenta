@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace PuntoDeVenta.Usuarios
 {
@@ -88,26 +89,40 @@ namespace PuntoDeVenta.Usuarios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (TextNombre.Text != "" && TextApellido.Text != "" && TextDui.Text != "" && TextTelefono.Text != "")
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            bool isValid = regex.IsMatch(TextCorreo.Text.Trim());
+            if (!isValid)
             {
-                var add = new ModelDB.Contexto();
-                var us = new ModelDB.Usuarios();
-                us.Us_Usuario = "luis2018";
-                us.Us_Nombre = TextNombre.Text;
-                us.Us_Apellido = TextApellido.Text;
-                us.Us_Correo = TextCorreo.Text;
-                us.Us_Telefono = Convert.ToInt32(TextTelefono.Text);
-                us.Us_DUI = Convert.ToInt32(TextDui.Text);
-                us.Us_Estado = true;
-                add.Usuarios.Add(us);
-                add.SaveChanges(); MessageBox.Show("Usuario guardado");
-
+                MessageBox.Show("Correo Invalido.");
             }
-            else MessageBox.Show("Faltan campos por llenar");
+            else
+            {
+                if (TextNombre.Text != "" && TextApellido.Text != "" && TextDui.Text != "" && TextTelefono.Text != "")
+                {
+                    var add = new ModelDB.Contexto();
+                    var us = new ModelDB.Usuarios();
+                    us.Us_Usuario = "luis2018";
+                    us.Us_Nombre = TextNombre.Text;
+                    us.Us_Apellido = TextApellido.Text;
+                    us.Us_Correo = TextCorreo.Text;
+                    us.Us_Telefono = Convert.ToInt32(TextTelefono.Text);
+                    us.Us_DUI = Convert.ToInt32(TextDui.Text);
+                    us.Us_Estado = true;
+                    add.Usuarios.Add(us);
+                    add.SaveChanges(); MessageBox.Show("Usuario guardado");
+
+                }
+                else MessageBox.Show("Faltan campos por llenar");
+            }
         }
 
         private void TextNombre_KeyDown(object sender, KeyEventArgs e)
         {
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

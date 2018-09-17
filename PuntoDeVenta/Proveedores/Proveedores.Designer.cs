@@ -117,6 +117,7 @@
             this.txt_Correo.Name = "txt_Correo";
             this.txt_Correo.Size = new System.Drawing.Size(169, 22);
             this.txt_Correo.TabIndex = 9;
+            this.txt_Correo.TextChanged += new System.EventHandler(this.txt_Correo_TextChanged);
             // 
             // txt_Contacto
             // 
@@ -131,7 +132,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Location = new System.Drawing.Point(488, 356);
-            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(204, 60);
             this.btn_Cancelar.TabIndex = 13;
@@ -142,7 +143,7 @@
             // btn_Guardar
             // 
             this.btn_Guardar.Location = new System.Drawing.Point(240, 356);
-            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(193, 60);
             this.btn_Guardar.TabIndex = 12;
