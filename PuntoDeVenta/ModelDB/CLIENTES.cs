@@ -21,7 +21,7 @@ namespace PuntoDeVenta.ModelDB
         public Nullable<int> telefono { get; set; }
         public string correo { get; set; }
         public Nullable<int> dui { get; set; }
-        public Nullable<int> nit { get; set; }
-        public int tipoCliente { get; set; }
+        public Nullable<long> nit { get; set; }
+        public string tipoCliente { get; set; }
     }
 }

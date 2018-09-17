@@ -119,11 +119,16 @@
     <Compile Include="Proveedores\Proveedores.Designer.cs">
       <DependentUpon>Proveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Proveedores\ProveedoresHome.cs">
+    <Compile Include="sistemaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tabla.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Proveedores\ProveedoresHome.Designer.cs">
-      <DependentUpon>ProveedoresHome.cs</DependentUpon>
+    <Compile Include="Tabla.Designer.cs">
+      <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\UsuarioModificar.cs">
       <SubType>Form</SubType>
@@ -167,8 +172,8 @@
     <EmbeddedResource Include="Proveedores\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Proveedores\ProveedoresHome.resx">
-      <DependentUpon>ProveedoresHome.cs</DependentUpon>
+    <EmbeddedResource Include="Tabla.resx">
+      <DependentUpon>Tabla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\UsuarioModificar.resx">
       <DependentUpon>UsuarioModificar.cs</DependentUpon>
@@ -197,6 +202,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sistemaDataSet.xsc">
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet.xss">
+      <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

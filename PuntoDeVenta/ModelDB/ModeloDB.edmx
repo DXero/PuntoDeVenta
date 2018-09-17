@@ -16,8 +16,8 @@
           <Property Name="telefono" Type="int" />
           <Property Name="correo" Type="nvarchar" MaxLength="50" />
           <Property Name="dui" Type="int" />
-          <Property Name="nit" Type="int" />
-          <Property Name="tipoCliente" Type="int" Nullable="false" />
+          <Property Name="nit" Type="bigint" />
+          <Property Name="tipoCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -50,6 +50,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="Us_Telefono" Type="int" />
           <Property Name="Us_DUI" Type="int" />
           <Property Name="Us_Estado" Type="bit" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="sistemaModelStoreContainer">
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
@@ -66,20 +67,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sistemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CLIENTES">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="telefono" Type="Int32" />
-          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dui" Type="Int32" />
-          <Property Name="nit" Type="Int32" />
-          <Property Name="tipoCliente" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="PROVEEDORES">
           <Key>
             <PropertyRef Name="id" />
@@ -102,6 +89,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="Us_Telefono" Type="Int32" />
           <Property Name="Us_DUI" Type="Int32" />
           <Property Name="Us_Estado" Type="Boolean" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Configuracion">
           <Key>
@@ -111,32 +99,31 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="campo" Type="Int32" />
         </EntityType>
         <EntityContainer Name="Contexto" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
           <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" />
+          <EntitySet Name="CLIENTES" EntityType="sistemaModel.CLIENTES" />
         </EntityContainer>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dui" Type="Int32" />
+          <Property Name="nit" Type="Int64" />
+          <Property Name="tipoCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sistemaModelStoreContainer" CdmEntityContainer="Contexto">
-          <EntitySetMapping Name="CLIENTES">
-            <EntityTypeMapping TypeName="sistemaModel.CLIENTES">
-              <MappingFragment StoreEntitySet="CLIENTES">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombres" ColumnName="nombres" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="dui" ColumnName="dui" />
-                <ScalarProperty Name="nit" ColumnName="nit" />
-                <ScalarProperty Name="tipoCliente" ColumnName="tipoCliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PROVEEDORES">
             <EntityTypeMapping TypeName="sistemaModel.PROVEEDORES">
               <MappingFragment StoreEntitySet="PROVEEDORES">
@@ -152,6 +139,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="sistemaModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="Us_Usuario" ColumnName="Us_Usuario" />
                 <ScalarProperty Name="Us_Nombre" ColumnName="Us_Nombre" />
                 <ScalarProperty Name="Us_Apellido" ColumnName="Us_Apellido" />
@@ -167,6 +155,21 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
               <MappingFragment StoreEntitySet="Configuracion">
                 <ScalarProperty Name="campo" ColumnName="campo" />
                 <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES">
+            <EntityTypeMapping TypeName="sistemaModel.CLIENTES">
+              <MappingFragment StoreEntitySet="CLIENTES">
+                <ScalarProperty Name="tipoCliente" ColumnName="tipoCliente" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
