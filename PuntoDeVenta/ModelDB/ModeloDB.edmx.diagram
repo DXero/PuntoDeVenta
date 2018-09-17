@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3656fde8133c4dcc91e049723e8e6b2c" Name="Diagram1">
-        <EntityTypeShape EntityType="sistemaModel.CLIENTES" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sistemaModel.PROVEEDORES" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sistemaModel.Usuarios" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sistemaModel.Configuracion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sistemaModel.CLIENTES" Width="1.5" PointX="7.5" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

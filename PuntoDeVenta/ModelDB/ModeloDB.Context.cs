@@ -25,9 +25,9 @@ namespace PuntoDeVenta.ModelDB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CLIENTES> CLIENTES { get; set; }
         public virtual DbSet<PROVEEDORES> PROVEEDORES { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Configuracion> Configuracion { get; set; }
+        public virtual DbSet<CLIENTES> CLIENTES { get; set; }
     }
 }
