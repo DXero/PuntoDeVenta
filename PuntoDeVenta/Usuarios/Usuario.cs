@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace PuntoDeVenta.Usuarios
         public Usuario()
         {
             InitializeComponent();
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -88,7 +90,13 @@ namespace PuntoDeVenta.Usuarios
         {
             if (TextNombre.Text != "" && TextApellido.Text != "" && TextDui.Text != "" && TextTelefono.Text != "")
             {
-                  
+                var us = new ModelDB.Usuarios();
+                us.Us_Nombre = TextNombre.Text;
+                us.Us_Apellido = TextApellido.Text;
+                us.Us_Correo = TextCorreo.Text;
+                us.Us_Telefono = Convert.ToInt32(TextTelefono.Text);
+                us.Us_DUI = Convert.ToInt32(TextDui.Text);
+
             }
             else MessageBox.Show("Faltan campos por llenar");
         }
