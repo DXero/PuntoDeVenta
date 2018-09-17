@@ -90,12 +90,17 @@ namespace PuntoDeVenta.Usuarios
         {
             if (TextNombre.Text != "" && TextApellido.Text != "" && TextDui.Text != "" && TextTelefono.Text != "")
             {
+                var add = new ModelDB.Contexto();
                 var us = new ModelDB.Usuarios();
+                us.Us_Usuario = "luis2018";
                 us.Us_Nombre = TextNombre.Text;
                 us.Us_Apellido = TextApellido.Text;
                 us.Us_Correo = TextCorreo.Text;
                 us.Us_Telefono = Convert.ToInt32(TextTelefono.Text);
                 us.Us_DUI = Convert.ToInt32(TextDui.Text);
+                us.Us_Estado = true;
+                add.Usuarios.Add(us);
+                add.SaveChanges(); MessageBox.Show("Usuario guardado");
 
             }
             else MessageBox.Show("Faltan campos por llenar");

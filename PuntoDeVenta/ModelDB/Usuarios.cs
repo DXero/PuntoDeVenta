@@ -21,6 +21,6 @@ namespace PuntoDeVenta.ModelDB
         public Nullable<int> Us_Telefono { get; set; }
         public Nullable<int> Us_DUI { get; set; }
         public bool Us_Estado { get; set; }
-        public object Usuarios { get; internal set; }
+       // public object Usuarios { get; internal set; }
     }
 }

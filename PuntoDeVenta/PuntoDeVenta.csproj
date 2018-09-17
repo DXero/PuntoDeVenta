@@ -31,8 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>PuntoDeVenta.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
