@@ -56,16 +56,27 @@ namespace PuntoDeVenta.Proveedores
         {
             if (txt_NomEmpresa.Text != "" && txt_Telefono.Text != "" && txt_Contacto.Text != "" && txt_Correo.Text != "")
             {
-                //Aqui va la consulta del boton.
+                try
+                {
+                    var add = new ModelDB.Contexto();
+                    var proveedores = new ModelDB.PROVEEDORES() { nombreEmpresa = txt_NomEmpresa.Text , correo = txt_Correo.Text 
+                        , telefono = int.Parse(txt_Telefono.Text), contacto = txt_Contacto.Text};
+                if (rb_No.Checked == true)  proveedores.activo = false; else proveedores.activo = true;
+                add.PROVEEDORES.Add(proveedores);
+                add.SaveChanges(); MessageBox.Show("Proveedor guardado");
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    MessageBox.Show("Algo salio mal, Codigo del error: " + ex.ErrorCode);
+                }
             }
             else MessageBox.Show("Faltan campos por llenar");
 
         }
 
-       
-        
-
-       
-        
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
