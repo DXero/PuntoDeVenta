@@ -113,6 +113,12 @@
     <Compile Include="Proveedores\Modificar Proveedores.Designer.cs">
       <DependentUpon>Modificar Proveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Proveedores\Principal Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedores\Principal Proveedores.Designer.cs">
+      <DependentUpon>Principal Proveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Proveedores\Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Modificar Proveedores.resx">
       <DependentUpon>Modificar Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores\Principal Proveedores.resx">
+      <DependentUpon>Principal Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
