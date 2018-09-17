@@ -136,6 +136,12 @@
     <Compile Include="Tabla.Designer.cs">
       <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\Principal Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\Principal Usuarios.Designer.cs">
+      <DependentUpon>Principal Usuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\UsuarioModificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\Principal Usuarios.resx">
+      <DependentUpon>Principal Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\UsuarioModificar.resx">
       <DependentUpon>UsuarioModificar.cs</DependentUpon>
