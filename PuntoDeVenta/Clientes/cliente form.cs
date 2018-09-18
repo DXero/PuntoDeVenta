@@ -84,22 +84,20 @@ namespace PuntoDeVenta.Clientes
             }
         }
 
-
-
-
         private void textTelefono_TextChanged(object sender, EventArgs e)
         {
 
         }
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
+
             validacion = true;
             //***********
             if (textNombre.Text == "" || textApellidos.Text == "") { MessageBox.Show("Los campos 'Nombres' y 'Apellidos' son obligatorios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             if (textTelefono.Text != "" && textTelefono.Text.Length != 8) { MessageBox.Show("el campo 'Telefono' debe contener 8 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             if (textNit.Text != "" && textNit.Text.Length != 14) { MessageBox.Show("el campo 'NIT' debe contener 14 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             if (textDui.Text != "" && textDui.Text.Length != 9) { MessageBox.Show("el campo 'DUI' debe contener 9 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-
+            
             //***********
             if (validacion != false)
             {
@@ -121,5 +119,5 @@ namespace PuntoDeVenta.Clientes
 
         
        
-    }
+    
 }
