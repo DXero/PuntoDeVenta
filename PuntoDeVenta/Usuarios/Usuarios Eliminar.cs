@@ -16,5 +16,10 @@ namespace PuntoDeVenta.Proveedores
         {
             InitializeComponent();
         }
+
+        private void Usuarios_Eliminar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

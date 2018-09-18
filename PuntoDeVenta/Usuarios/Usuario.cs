@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace PuntoDeVenta.Usuarios
 {
@@ -101,7 +103,8 @@ namespace PuntoDeVenta.Usuarios
                 {
                     var add = new ModelDB.Contexto();
                     var us = new ModelDB.Usuarios();
-                    us.Us_Usuario = "luis2018";
+                    us.Us_Usuario = TextUsuario.Text;
+                    us.password = Encriptar("0000");
                     us.Us_Nombre = TextNombre.Text;
                     us.Us_Apellido = TextApellido.Text;
                     us.Us_Correo = TextCorreo.Text;
@@ -109,7 +112,8 @@ namespace PuntoDeVenta.Usuarios
                     us.Us_DUI = Convert.ToInt32(TextDui.Text);
                     us.Us_Estado = true;
                     add.Usuarios.Add(us);
-                    add.SaveChanges(); MessageBox.Show("Usuario guardado");
+                    add.SaveChanges();
+                    MessageBox.Show("Usuario guardado");
 
                 }
                 else MessageBox.Show("Faltan campos por llenar");
@@ -124,5 +128,48 @@ namespace PuntoDeVenta.Usuarios
         {
             this.Close();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        public static string Encriptar(string texto)
+        {
+            try
+            {
+                string key = "qualityinfosolutions"; //llave para encriptar datos
+                byte[] keyArray;
+                byte[] Arreglo_a_Cifrar = UTF8Encoding.UTF8.GetBytes(texto);
+                //Se utilizan las clases de encriptación MD5
+                MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+
+                keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+
+                hashmd5.Clear();
+
+                //Algoritmo TripleDES
+                TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+
+                tdes.Key = keyArray;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform cTransform = tdes.CreateEncryptor();
+
+                byte[] ArrayResultado = cTransform.TransformFinalBlock(Arreglo_a_Cifrar, 0, Arreglo_a_Cifrar.Length);
+
+                tdes.Clear();
+
+                //se regresa el resultado en forma de una cadena
+                texto = Convert.ToBase64String(ArrayResultado, 0, ArrayResultado.Length);
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return texto;
+        }
     }
+   
 }

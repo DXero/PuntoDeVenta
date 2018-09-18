@@ -16,5 +16,10 @@ namespace PuntoDeVenta.Proveedores
         {
             InitializeComponent();
         }
+
+        private void UsuarioModificar_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
