@@ -130,29 +130,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sistemaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="sistemaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sistemaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tabla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabla.Designer.cs">
       <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\DeshabilitarUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\DeshabilitarUs.Designer.cs">
+      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\UsModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\UsModificar.Designer.cs">
+      <DependentUpon>UsModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\Principal Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuarios\Principal Usuarios.Designer.cs">
       <DependentUpon>Principal Usuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios\UsuarioModificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usuarios\UsuarioModificar.Designer.cs">
-      <DependentUpon>UsuarioModificar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios\Usuarios Eliminar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usuarios\Usuarios Eliminar.Designer.cs">
-      <DependentUpon>Usuarios Eliminar.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\Usuario.cs">
       <SubType>Form</SubType>
@@ -190,14 +200,14 @@
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\DeshabilitarUs.resx">
+      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Principal Usuarios.resx">
       <DependentUpon>Principal Usuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usuarios\UsuarioModificar.resx">
-      <DependentUpon>UsuarioModificar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usuarios\Usuarios Eliminar.resx">
-      <DependentUpon>Usuarios Eliminar.cs</DependentUpon>
+    <EmbeddedResource Include="Usuarios\UsModificar.resx">
+      <DependentUpon>UsModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Usuario.resx">
       <DependentUpon>Usuario.cs</DependentUpon>
@@ -230,6 +240,28 @@
     </None>
     <None Include="sistemaDataSet.xss">
       <DependentUpon>sistemaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet1.xsc">
+      <DependentUpon>sistemaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet1.xss">
+      <DependentUpon>sistemaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet2.xsc">
+      <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet2.xss">
+      <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup />

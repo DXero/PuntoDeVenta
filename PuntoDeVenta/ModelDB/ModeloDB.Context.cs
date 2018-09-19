@@ -30,7 +30,7 @@ namespace PuntoDeVenta.ModelDB
         public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<CLIENTES> CLIENTES { get; set; }
 
-        internal void SaveChanges()
+        new internal void  SaveChanges()
         {
             throw new NotImplementedException();
         }
