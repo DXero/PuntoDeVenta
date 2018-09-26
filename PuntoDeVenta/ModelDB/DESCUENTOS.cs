@@ -12,24 +12,20 @@ namespace PuntoDeVenta.ModelDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class DESCUENTOS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuarios()
+        public DESCUENTOS()
         {
-            this.COMPRAS = new HashSet<COMPRAS>();
+            this.PRODUCTOS = new HashSet<PRODUCTOS>();
         }
     
-        public string Us_Usuario { get; set; }
-        public string Us_Nombre { get; set; }
-        public string Us_Apellido { get; set; }
-        public string Us_Correo { get; set; }
-        public Nullable<int> Us_Telefono { get; set; }
-        public Nullable<int> Us_DUI { get; set; }
-        public bool Us_Estado { get; set; }
-        public string US_Password { get; set; }
+        public int idDescuento { get; set; }
+        public Nullable<double> descuento { get; set; }
+        public Nullable<bool> activo { get; set; }
+        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMPRAS> COMPRAS { get; set; }
+        public virtual ICollection<PRODUCTOS> PRODUCTOS { get; set; }
     }
 }

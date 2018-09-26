@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="sistemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
         <EntityType Name="CLIENTES">
           <Key>
             <PropertyRef Name="id" />
@@ -19,6 +27,18 @@
           <Property Name="nit" Type="bigint" />
           <Property Name="tipoCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="COMPRAS">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdUsuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="80" />
+          <Property Name="Anulado" Type="bit" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="60" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Configuracion">
@@ -27,6 +47,41 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           </Key>
           <Property Name="NombreEmpresa" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="campo" Type="int" />
+        </EntityType>
+        <EntityType Name="DESCUENTOS">
+          <Key>
+            <PropertyRef Name="idDescuento" />
+          </Key>
+          <Property Name="idDescuento" Type="int" Nullable="false" />
+          <Property Name="descuento" Type="float" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DETALLE_COMPRA">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCompras" Type="bigint" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Costo" Type="real" />
+          <Property Name="Cantidad" Type="real" />
+          <Property Name="SubTotal" Type="real" />
+          <Property Name="Descuento" Type="real" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="idProductos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="precio" Type="float" />
+          <Property Name="existencia" Type="int" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="idDescuentos" Type="int" />
+          <Property Name="costo" Type="float" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="codigoBarra" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="PROVEEDORES">
           <Key>
@@ -39,6 +94,16 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="activo" Type="bit" />
           <Property Name="contacto" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="Us_Usuario" />
@@ -50,18 +115,145 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="Us_Telefono" Type="int" />
           <Property Name="Us_DUI" Type="int" />
           <Property Name="Us_Estado" Type="bit" Nullable="false" />
-          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="US_Password" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="VENCIMIENTOS">
+          <Key>
+            <PropertyRef Name="idVencimiento" />
+          </Key>
+          <Property Name="idVencimiento" Type="int" Nullable="false" />
+          <Property Name="idProductos" Type="int" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <Association Name="FK_COMPRAS_COMPRAS">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="0..1" />
+          <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPRAS_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Us_Usuario" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_COMPRA_COMPRAS">
+          <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="0..1" />
+          <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPRAS">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="DETALLE_COMPRA">
+              <PropertyRef Name="IdCompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_COMPRA_PRODUCTOS">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="0..1" />
+          <End Role="DETALLE_COMPRA" Type="Self.DETALLE_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="DETALLE_COMPRA">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTOS_CATEGORIA">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTOS_DESCUENTOS">
+          <End Role="DESCUENTOS" Type="Self.DESCUENTOS" Multiplicity="0..1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESCUENTOS">
+              <PropertyRef Name="idDescuento" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="idDescuentos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENCIMIENTOS_PRODUCTOS">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="0..1" />
+          <End Role="VENCIMIENTOS" Type="Self.VENCIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="VENCIMIENTOS">
+              <PropertyRef Name="idProductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="sistemaModelStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DESCUENTOS" EntityType="Self.DESCUENTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLE_COMPRA" EntityType="Self.DETALLE_COMPRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENCIMIENTOS" EntityType="Self.VENCIMIENTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Configuracion].[NombreEmpresa] AS [NombreEmpresa], 
     [Configuracion].[campo] AS [campo]
     FROM [dbo].[Configuracion] AS [Configuracion]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_COMPRAS_COMPRAS" Association="Self.FK_COMPRAS_COMPRAS">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPRAS_Usuarios1" Association="Self.FK_COMPRAS_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_COMPRA_COMPRAS" Association="Self.FK_DETALLE_COMPRA_COMPRAS">
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_COMPRA_PRODUCTOS" Association="Self.FK_DETALLE_COMPRA_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTOS_CATEGORIA" Association="Self.FK_PRODUCTOS_CATEGORIA">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTOS_DESCUENTOS" Association="Self.FK_PRODUCTOS_DESCUENTOS">
+            <End Role="DESCUENTOS" EntitySet="DESCUENTOS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENCIMIENTOS_PRODUCTOS" Association="Self.FK_VENCIMIENTOS_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -77,6 +269,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="activo" Type="Boolean" />
           <Property Name="contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COMPRAS" Relationship="sistemaModel.FK_COMPRAS_COMPRAS" FromRole="PROVEEDORES" ToRole="COMPRAS" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -89,7 +282,8 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="Us_Telefono" Type="Int32" />
           <Property Name="Us_DUI" Type="Int32" />
           <Property Name="Us_Estado" Type="Boolean" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="US_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COMPRAS" Relationship="sistemaModel.FK_COMPRAS_Usuarios1" FromRole="Usuarios" ToRole="COMPRAS" />
         </EntityType>
         <EntityType Name="Configuracion">
           <Key>
@@ -103,6 +297,41 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" />
           <EntitySet Name="CLIENTES" EntityType="sistemaModel.CLIENTES" />
+          <EntitySet Name="CATEGORIA" EntityType="sistemaModel.CATEGORIA" />
+          <EntitySet Name="COMPRAS" EntityType="sistemaModel.COMPRAS" />
+          <EntitySet Name="DESCUENTOS" EntityType="sistemaModel.DESCUENTOS" />
+          <EntitySet Name="DETALLE_COMPRA" EntityType="sistemaModel.DETALLE_COMPRA" />
+          <EntitySet Name="PRODUCTOS" EntityType="sistemaModel.PRODUCTOS" />
+          <EntitySet Name="sysdiagrams" EntityType="sistemaModel.sysdiagrams" />
+          <EntitySet Name="VENCIMIENTOS" EntityType="sistemaModel.VENCIMIENTOS" />
+          <AssociationSet Name="FK_PRODUCTOS_CATEGORIA" Association="sistemaModel.FK_PRODUCTOS_CATEGORIA">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPRAS_COMPRAS" Association="sistemaModel.FK_COMPRAS_COMPRAS">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPRAS_Usuarios1" Association="sistemaModel.FK_COMPRAS_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_COMPRA_COMPRAS" Association="sistemaModel.FK_DETALLE_COMPRA_COMPRAS">
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTOS_DESCUENTOS" Association="sistemaModel.FK_PRODUCTOS_DESCUENTOS">
+            <End Role="DESCUENTOS" EntitySet="DESCUENTOS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_COMPRA_PRODUCTOS" Association="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENCIMIENTOS_PRODUCTOS" Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CLIENTES">
           <Key>
@@ -118,6 +347,175 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="nit" Type="Int64" />
           <Property Name="tipoCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_PRODUCTOS_CATEGORIA" FromRole="CATEGORIA" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="COMPRAS">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Comentario" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Anulado" Type="Boolean" />
+          <Property Name="Motivo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVEEDORES" Relationship="sistemaModel.FK_COMPRAS_COMPRAS" FromRole="COMPRAS" ToRole="PROVEEDORES" />
+          <NavigationProperty Name="Usuarios" Relationship="sistemaModel.FK_COMPRAS_Usuarios1" FromRole="COMPRAS" ToRole="Usuarios" />
+          <NavigationProperty Name="DETALLE_COMPRA" Relationship="sistemaModel.FK_DETALLE_COMPRA_COMPRAS" FromRole="COMPRAS" ToRole="DETALLE_COMPRA" />
+        </EntityType>
+        <EntityType Name="DESCUENTOS">
+          <Key>
+            <PropertyRef Name="idDescuento" />
+          </Key>
+          <Property Name="idDescuento" Type="Int32" Nullable="false" />
+          <Property Name="descuento" Type="Double" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_PRODUCTOS_DESCUENTOS" FromRole="DESCUENTOS" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="DETALLE_COMPRA">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompras" Type="Int64" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Costo" Type="Single" />
+          <Property Name="Cantidad" Type="Single" />
+          <Property Name="SubTotal" Type="Single" />
+          <Property Name="Descuento" Type="Single" />
+          <NavigationProperty Name="COMPRAS" Relationship="sistemaModel.FK_DETALLE_COMPRA_COMPRAS" FromRole="DETALLE_COMPRA" ToRole="COMPRAS" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" FromRole="DETALLE_COMPRA" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="idProductos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="precio" Type="Double" />
+          <Property Name="existencia" Type="Int32" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="idDescuentos" Type="Int32" />
+          <Property Name="costo" Type="Double" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="codigoBarra" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CATEGORIA" Relationship="sistemaModel.FK_PRODUCTOS_CATEGORIA" FromRole="PRODUCTOS" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DESCUENTOS" Relationship="sistemaModel.FK_PRODUCTOS_DESCUENTOS" FromRole="PRODUCTOS" ToRole="DESCUENTOS" />
+          <NavigationProperty Name="DETALLE_COMPRA" Relationship="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" FromRole="PRODUCTOS" ToRole="DETALLE_COMPRA" />
+          <NavigationProperty Name="VENCIMIENTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="VENCIMIENTOS" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VENCIMIENTOS">
+          <Key>
+            <PropertyRef Name="idVencimiento" />
+          </Key>
+          <Property Name="idVencimiento" Type="Int32" Nullable="false" />
+          <Property Name="idProductos" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="VENCIMIENTOS" ToRole="PRODUCTOS" />
+        </EntityType>
+        <Association Name="FK_PRODUCTOS_CATEGORIA">
+          <End Type="sistemaModel.CATEGORIA" Role="CATEGORIA" Multiplicity="0..1" />
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPRAS_COMPRAS">
+          <End Type="sistemaModel.PROVEEDORES" Role="PROVEEDORES" Multiplicity="0..1" />
+          <End Type="sistemaModel.COMPRAS" Role="COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPRAS_Usuarios1">
+          <End Type="sistemaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="sistemaModel.COMPRAS" Role="COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Us_Usuario" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_COMPRA_COMPRAS">
+          <End Type="sistemaModel.COMPRAS" Role="COMPRAS" Multiplicity="0..1" />
+          <End Type="sistemaModel.DETALLE_COMPRA" Role="DETALLE_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPRAS">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="DETALLE_COMPRA">
+              <PropertyRef Name="IdCompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTOS_DESCUENTOS">
+          <End Type="sistemaModel.DESCUENTOS" Role="DESCUENTOS" Multiplicity="0..1" />
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESCUENTOS">
+              <PropertyRef Name="idDescuento" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="idDescuentos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_COMPRA_PRODUCTOS">
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="0..1" />
+          <End Type="sistemaModel.DETALLE_COMPRA" Role="DETALLE_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="DETALLE_COMPRA">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENCIMIENTOS_PRODUCTOS">
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="0..1" />
+          <End Type="sistemaModel.VENCIMIENTOS" Role="VENCIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="VENCIMIENTOS">
+              <PropertyRef Name="idProductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -139,7 +537,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="sistemaModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="US_Password" ColumnName="US_Password" />
                 <ScalarProperty Name="Us_Usuario" ColumnName="Us_Usuario" />
                 <ScalarProperty Name="Us_Nombre" ColumnName="Us_Nombre" />
                 <ScalarProperty Name="Us_Apellido" ColumnName="Us_Apellido" />
@@ -170,6 +568,86 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIA">
+            <EntityTypeMapping TypeName="sistemaModel.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIA">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPRAS">
+            <EntityTypeMapping TypeName="sistemaModel.COMPRAS">
+              <MappingFragment StoreEntitySet="COMPRAS">
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DESCUENTOS">
+            <EntityTypeMapping TypeName="sistemaModel.DESCUENTOS">
+              <MappingFragment StoreEntitySet="DESCUENTOS">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="idDescuento" ColumnName="idDescuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_COMPRA">
+            <EntityTypeMapping TypeName="sistemaModel.DETALLE_COMPRA">
+              <MappingFragment StoreEntitySet="DETALLE_COMPRA">
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdCompras" ColumnName="IdCompras" />
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOS">
+            <EntityTypeMapping TypeName="sistemaModel.PRODUCTOS">
+              <MappingFragment StoreEntitySet="PRODUCTOS">
+                <ScalarProperty Name="codigoBarra" ColumnName="codigoBarra" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="idDescuentos" ColumnName="idDescuentos" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="existencia" ColumnName="existencia" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="sistemaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENCIMIENTOS">
+            <EntityTypeMapping TypeName="sistemaModel.VENCIMIENTOS">
+              <MappingFragment StoreEntitySet="VENCIMIENTOS">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
+                <ScalarProperty Name="idVencimiento" ColumnName="idVencimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

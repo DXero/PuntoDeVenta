@@ -78,10 +78,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\CATEGORIA.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\CLIENTES.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\COMPRAS.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\Configuracion.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\DESCUENTOS.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\DETALLE_COMPRA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\ModeloDB.Context.cs">
@@ -99,10 +111,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\PRODUCTOS.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\PROVEEDORES.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\sysdiagrams.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\Usuarios.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\VENCIMIENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Productos\Producto Modificar.cs">
@@ -170,10 +191,6 @@
     <Compile Include="Tabla.Designer.cs">
       <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios\DeshabilitarUs.cs" />
-    <Compile Include="Usuarios\DeshabilitarUs.Designer.cs">
-      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Usuarios\UsModificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,9 +250,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usuarios\DeshabilitarUs.resx">
-      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Principal Usuarios.resx">
       <DependentUpon>Principal Usuarios.cs</DependentUpon>

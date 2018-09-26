@@ -29,10 +29,12 @@ namespace PuntoDeVenta.ModelDB
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<CLIENTES> CLIENTES { get; set; }
-
-        new internal void  SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual DbSet<CATEGORIA> CATEGORIA { get; set; }
+        public virtual DbSet<COMPRAS> COMPRAS { get; set; }
+        public virtual DbSet<DESCUENTOS> DESCUENTOS { get; set; }
+        public virtual DbSet<DETALLE_COMPRA> DETALLE_COMPRA { get; set; }
+        public virtual DbSet<PRODUCTOS> PRODUCTOS { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<VENCIMIENTOS> VENCIMIENTOS { get; set; }
     }
 }

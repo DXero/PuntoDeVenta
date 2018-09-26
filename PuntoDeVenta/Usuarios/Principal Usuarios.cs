@@ -53,13 +53,13 @@ namespace PuntoDeVenta.Usuarios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DeshabilitarUs us = new DeshabilitarUs();
+            /*DeshabilitarUs us = new DeshabilitarUs();
             us.TopLevel = false;
             us.Dock = DockStyle.Fill;
             us.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(us);
-            us.Show();
+            us.Show();*/
         }
     }
 }

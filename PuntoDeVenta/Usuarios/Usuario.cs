@@ -104,7 +104,7 @@ namespace PuntoDeVenta.Usuarios
                     var add = new ModelDB.Contexto();
                     var us = new ModelDB.Usuarios();
                     us.Us_Usuario = TextUsuario.Text;
-                    us.password = Encriptar("0000");
+                    us.US_Password = Encriptar("0000");
                     us.Us_Nombre = TextNombre.Text;
                     us.Us_Apellido = TextApellido.Text;
                     us.Us_Correo = TextCorreo.Text;

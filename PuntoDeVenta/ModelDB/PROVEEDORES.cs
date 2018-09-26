@@ -14,11 +14,20 @@ namespace PuntoDeVenta.ModelDB
     
     public partial class PROVEEDORES
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PROVEEDORES()
+        {
+            this.COMPRAS = new HashSet<COMPRAS>();
+        }
+    
         public int id { get; set; }
         public string nombreEmpresa { get; set; }
         public Nullable<int> telefono { get; set; }
         public string correo { get; set; }
         public Nullable<bool> activo { get; set; }
         public string contacto { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMPRAS> COMPRAS { get; set; }
     }
 }
