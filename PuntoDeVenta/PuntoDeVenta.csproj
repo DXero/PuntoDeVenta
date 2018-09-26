@@ -66,6 +66,12 @@
     <Compile Include="Clientes\cliente form.Designer.cs">
       <DependentUpon>cliente form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compras\FormularioCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\FormularioCompras.Designer.cs">
+      <DependentUpon>FormularioCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,9 +152,7 @@
     <Compile Include="Tabla.Designer.cs">
       <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios\DeshabilitarUs.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Usuarios\DeshabilitarUs.cs" />
     <Compile Include="Usuarios\DeshabilitarUs.Designer.cs">
       <DependentUpon>DeshabilitarUs.cs</DependentUpon>
     </Compile>
@@ -172,6 +176,9 @@
     </Compile>
     <EmbeddedResource Include="Clientes\cliente form.resx">
       <DependentUpon>cliente form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\FormularioCompras.resx">
+      <DependentUpon>FormularioCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
