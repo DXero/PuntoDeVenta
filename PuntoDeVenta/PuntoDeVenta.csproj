@@ -105,6 +105,24 @@
     <Compile Include="ModelDB\Usuarios.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Productos\Producto Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Producto Modificar.Designer.cs">
+      <DependentUpon>Producto Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\Producto Nuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Producto Nuevo.Designer.cs">
+      <DependentUpon>Producto Nuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\Productos Ver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Productos Ver.Designer.cs">
+      <DependentUpon>Productos Ver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores\Eliminar Proveedores.cs">
@@ -182,6 +200,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Producto Modificar.resx">
+      <DependentUpon>Producto Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Producto Nuevo.resx">
+      <DependentUpon>Producto Nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Productos Ver.resx">
+      <DependentUpon>Productos Ver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
