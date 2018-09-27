@@ -42,16 +42,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.sistemaDataSet2 = new PuntoDeVenta.sistemaDataSet2();
-            this.sistemaDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuariosTableAdapter = new PuntoDeVenta.sistemaDataSet2TableAdapters.UsuariosTableAdapter();
+            this.sistemaDataSet2 = new PuntoDeVenta.sistemaDataSet2();
             this.usuariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2BindingSource)).BeginInit();
+            this.sistemaDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usuariosTableAdapter = new PuntoDeVenta.sistemaDataSet2TableAdapters.UsuariosTableAdapter();
+            this.TextUs = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -81,7 +81,6 @@
             this.TextDui.Name = "TextDui";
             this.TextDui.Size = new System.Drawing.Size(151, 20);
             this.TextDui.TabIndex = 33;
-            this.TextDui.TextChanged += new System.EventHandler(this.TextDui_TextChanged);
             // 
             // TextTelefono
             // 
@@ -179,50 +178,46 @@
             this.label6.TabIndex = 37;
             this.label6.Text = "Usuario: ";
             // 
-            // comboBox1
+            // usuariosBindingSource
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.usuariosBindingSource, "Us_Usuario", true));
-            this.comboBox1.DataSource = this.usuariosBindingSource1;
-            this.comboBox1.DisplayMember = "Us_Usuario";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(115, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 36;
-            this.comboBox1.ValueMember = "Us_Usuario";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.MostrarDatos);
+            this.usuariosBindingSource.DataMember = "Usuarios";
+            this.usuariosBindingSource.DataSource = this.sistemaDataSet2;
             // 
             // sistemaDataSet2
             // 
             this.sistemaDataSet2.DataSetName = "sistemaDataSet2";
             this.sistemaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // usuariosBindingSource1
+            // 
+            this.usuariosBindingSource1.DataMember = "Usuarios";
+            this.usuariosBindingSource1.DataSource = this.sistemaDataSet2BindingSource;
+            // 
             // sistemaDataSet2BindingSource
             // 
             this.sistemaDataSet2BindingSource.DataSource = this.sistemaDataSet2;
             this.sistemaDataSet2BindingSource.Position = 0;
             // 
-            // usuariosBindingSource
-            // 
-            this.usuariosBindingSource.DataMember = "Usuarios";
-            this.usuariosBindingSource.DataSource = this.sistemaDataSet2;
-            // 
             // usuariosTableAdapter
             // 
             this.usuariosTableAdapter.ClearBeforeFill = true;
             // 
-            // usuariosBindingSource1
+            // TextUs
             // 
-            this.usuariosBindingSource1.DataMember = "Usuarios";
-            this.usuariosBindingSource1.DataSource = this.sistemaDataSet2BindingSource;
+            this.TextUs.Location = new System.Drawing.Point(115, 47);
+            this.TextUs.Margin = new System.Windows.Forms.Padding(2);
+            this.TextUs.MaxLength = 50;
+            this.TextUs.Name = "TextUs";
+            this.TextUs.Size = new System.Drawing.Size(151, 20);
+            this.TextUs.TabIndex = 38;
             // 
             // UsModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 384);
+            this.Controls.Add(this.TextUs);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.TextDui);
@@ -238,10 +233,10 @@
             this.Name = "UsModificar";
             this.Text = "Editar usuario";
             this.Load += new System.EventHandler(this.UsModificar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet2BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,11 +257,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.BindingSource sistemaDataSet2BindingSource;
         private sistemaDataSet2 sistemaDataSet2;
         private System.Windows.Forms.BindingSource usuariosBindingSource;
         private sistemaDataSet2TableAdapters.UsuariosTableAdapter usuariosTableAdapter;
         private System.Windows.Forms.BindingSource usuariosBindingSource1;
+        private System.Windows.Forms.TextBox TextUs;
     }
 }

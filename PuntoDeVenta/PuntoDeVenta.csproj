@@ -191,6 +191,18 @@
     <Compile Include="Tabla.Designer.cs">
       <DependentUpon>Tabla.cs</DependentUpon>
     </Compile>
+    <Compile Include="TablaUs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TablaUs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\DeshabilitarUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\DeshabilitarUs.Designer.cs">
+      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\StaticValue.cs" />
     <Compile Include="Usuarios\UsModificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +263,9 @@
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\DeshabilitarUs.resx">
+      <DependentUpon>DeshabilitarUs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Principal Usuarios.resx">
       <DependentUpon>Principal Usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +325,17 @@
     </None>
     <None Include="sistemaDataSet2.xss">
       <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="TablaUs.xsc">
+      <DependentUpon>TablaUs.xsd</DependentUpon>
+    </None>
+    <None Include="TablaUs.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TablaUs.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TablaUs.xss">
+      <DependentUpon>TablaUs.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup />

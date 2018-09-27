@@ -20,11 +20,10 @@ namespace PuntoDeVenta.Usuarios
 
         private void UsModificar_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'sistemaDataSet2.Usuarios' Puede moverla o quitarla según sea necesario.
-            this.usuariosTableAdapter.Fill(this.sistemaDataSet2.Usuarios);
-            
+            TextUs.Text = StaticValue.us.ToString();
 
         }
+            
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,17 +35,6 @@ namespace PuntoDeVenta.Usuarios
 
         }
 
-        private void TextDui_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void MostrarDatos(object sender, EventArgs e)
-        {
-            var context = new ModelDB.Contexto();
-            var user = from Usuario in context.Usuarios select Usuario;
-
-           
-        }
+      
     }
 }

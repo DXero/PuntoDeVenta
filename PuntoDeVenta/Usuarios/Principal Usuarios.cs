@@ -20,7 +20,9 @@ namespace PuntoDeVenta.Usuarios
         
         private void Principal_Usuarios_Load(object sender, EventArgs e)
         {
-            
+            // TODO: esta línea de código carga datos en la tabla 'tablaUs.Usuarios' Puede moverla o quitarla según sea necesario.
+            this.usuariosTableAdapter.Fill(this.tablaUs.Usuarios);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -31,11 +33,7 @@ namespace PuntoDeVenta.Usuarios
         private void button1_Click(object sender, EventArgs e)
         {
             Usuario us = new Usuario();
-            us.TopLevel = false;
-            us.Dock = DockStyle.Fill;
-            us.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.panel1.Controls.Clear();
-            this.panel1.Controls.Add(us);
+           
             us.Show();
 
         }
@@ -43,23 +41,22 @@ namespace PuntoDeVenta.Usuarios
         private void button2_Click(object sender, EventArgs e)
         {
             UsModificar us = new UsModificar();
-            us.TopLevel = false;
-            us.Dock = DockStyle.Fill;
-            us.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.panel1.Controls.Clear();
-            this.panel1.Controls.Add(us);
+           
             us.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*DeshabilitarUs us = new DeshabilitarUs();
-            us.TopLevel = false;
-            us.Dock = DockStyle.Fill;
-            us.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.panel1.Controls.Clear();
-            this.panel1.Controls.Add(us);
-            us.Show();*/
+            DeshabilitarUs us = new DeshabilitarUs();
+
+            us.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[rowIndex];
+            StaticValue.us = dataGridView1.Rows[1].Cells[1].Value.ToString();
         }
     }
 }
