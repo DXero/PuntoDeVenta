@@ -146,12 +146,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedores\Eliminar Proveedores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Proveedores\Eliminar Proveedores.Designer.cs">
-      <DependentUpon>Eliminar Proveedores.cs</DependentUpon>
-    </Compile>
     <Compile Include="Proveedores\Modificar Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,11 +158,11 @@
     <Compile Include="Proveedores\Principal Proveedores.Designer.cs">
       <DependentUpon>Principal Proveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Proveedores\Proveedores.cs">
+    <Compile Include="Proveedores\Agregar Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Proveedores\Proveedores.Designer.cs">
-      <DependentUpon>Proveedores.cs</DependentUpon>
+    <Compile Include="Proveedores\Agregar Proveedores.Designer.cs">
+      <DependentUpon>Agregar Proveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="sistemaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -184,6 +178,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sistemaDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="Tabla.cs">
       <SubType>Form</SubType>
@@ -248,17 +247,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Proveedores\Eliminar Proveedores.resx">
-      <DependentUpon>Eliminar Proveedores.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Modificar Proveedores.resx">
       <DependentUpon>Modificar Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\Principal Proveedores.resx">
       <DependentUpon>Principal Proveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Proveedores\Proveedores.resx">
-      <DependentUpon>Proveedores.cs</DependentUpon>
+    <EmbeddedResource Include="Proveedores\Agregar Proveedores.resx">
+      <DependentUpon>Agregar Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
@@ -325,6 +321,17 @@
     </None>
     <None Include="sistemaDataSet2.xss">
       <DependentUpon>sistemaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet3.xsc">
+      <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet3.xss">
+      <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
     </None>
     <None Include="TablaUs.xsc">
       <DependentUpon>TablaUs.xsd</DependentUpon>

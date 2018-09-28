@@ -69,9 +69,9 @@ namespace PuntoDeVenta.Proveedores
                     var add = new ModelDB.Contexto();
                     var proveedores = new ModelDB.PROVEEDORES() { nombreEmpresa = txt_NomEmpresa.Text , correo = txt_Correo.Text 
                         , telefono = int.Parse(txt_Telefono.Text), contacto = txt_Contacto.Text};
-                if (rb_No.Checked == true)  proveedores.activo = false; else proveedores.activo = true;
+                proveedores.activo = ckactivo.Checked;
                 add.PROVEEDORES.Add(proveedores);
-                add.SaveChanges(); MessageBox.Show("Proveedor guardado");
+                add.SaveChanges(); MessageBox.Show("Proveedor guardado"); Close();
                 }
                 catch (System.Data.SqlClient.SqlException ex)
                 {
