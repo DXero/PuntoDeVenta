@@ -39,10 +39,18 @@ namespace PuntoDeVenta.Usuarios
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            UsModificar us = new UsModificar();
-           
-            us.Show();
+        {       
+            try
+            {
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                StaticValue.us = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+                UsModificar us = new UsModificar();
+                us.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,11 +60,5 @@ namespace PuntoDeVenta.Usuarios
             us.Show();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int rowIndex = e.RowIndex;
-            DataGridViewRow row = dataGridView1.Rows[rowIndex];
-            StaticValue.us = dataGridView1.Rows[1].Cells[1].Value.ToString();
-        }
     }
 }
