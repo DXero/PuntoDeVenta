@@ -66,6 +66,12 @@
     <Compile Include="Clientes\cliente form.Designer.cs">
       <DependentUpon>cliente form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compras\Anulado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Anulado.Designer.cs">
+      <DependentUpon>Anulado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compras\FormularioCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </Compile>
     <EmbeddedResource Include="Clientes\cliente form.resx">
       <DependentUpon>cliente form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Anulado.resx">
+      <DependentUpon>Anulado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compras\FormularioCompras.resx">
       <DependentUpon>FormularioCompras.cs</DependentUpon>
