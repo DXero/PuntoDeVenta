@@ -114,6 +114,7 @@ namespace PuntoDeVenta.Usuarios
                     add.Usuarios.Add(us);
                     add.SaveChanges();
                     MessageBox.Show("Usuario guardado");
+                    Close();
 
                 }
                 else MessageBox.Show("Faltan campos por llenar");

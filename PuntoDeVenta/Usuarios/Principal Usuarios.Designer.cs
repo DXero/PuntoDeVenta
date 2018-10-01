@@ -43,6 +43,7 @@
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tablaUs = new PuntoDeVenta.TablaUs();
             this.usuariosTableAdapter = new PuntoDeVenta.TablaUsTableAdapters.UsuariosTableAdapter();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaUs)).BeginInit();
@@ -155,11 +156,22 @@
             // 
             this.usuariosTableAdapter.ClearBeforeFill = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(531, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(94, 30);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Actualizar tabla";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Principal_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 452);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -190,5 +202,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usTelefonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usDUIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn usEstadoDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button button4;
     }
 }

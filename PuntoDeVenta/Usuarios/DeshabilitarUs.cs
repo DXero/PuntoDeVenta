@@ -21,5 +21,20 @@ namespace PuntoDeVenta.Usuarios
         {
             textBox1.Text = StaticValue.us.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var us = new ModelDB.Usuarios();
+            var mdf = new ModelDB.Contexto();
+
+            if (MessageBox.Show("Esta seguro que desea deshabilitar este usuario", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                us = mdf.Usuarios.Where(id => id.Us_Usuario == StaticValue.us).First();
+                us.Us_Estado = false;
+
+                if (mdf.SaveChanges() > 0){MessageBox.Show("El usuario se deshabilitó correctamente"); Close(); }
+                }
+
+            }
     }
 }

@@ -22,6 +22,7 @@ namespace PuntoDeVenta.Usuarios
         {
             // TODO: esta línea de código carga datos en la tabla 'tablaUs.Usuarios' Puede moverla o quitarla según sea necesario.
             this.usuariosTableAdapter.Fill(this.tablaUs.Usuarios);
+          
 
         }
 
@@ -33,9 +34,7 @@ namespace PuntoDeVenta.Usuarios
         private void button1_Click(object sender, EventArgs e)
         {
             Usuario us = new Usuario();
-           
             us.Show();
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,10 +54,22 @@ namespace PuntoDeVenta.Usuarios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DeshabilitarUs us = new DeshabilitarUs();
-
-            us.Show();
+            try
+            {
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                StaticValue.us = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+                DeshabilitarUs us = new DeshabilitarUs();
+                us.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.usuariosTableAdapter.Fill(this.tablaUs.Usuarios);
+        }
     }
 }
