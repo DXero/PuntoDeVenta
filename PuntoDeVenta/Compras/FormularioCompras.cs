@@ -87,7 +87,7 @@ namespace PuntoDeVenta.Compras
             validacion = true;
             //***********
             if (cbxProveedor.Text == "") { MessageBox.Show("Se debe de especificar el 'Proveedor'", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-
+            //termina validacion de campos solos
             if (validacion != false)
             { 
                     //Codigo Aqui
@@ -124,7 +124,7 @@ namespace PuntoDeVenta.Compras
             if (txtCodProducto.Text == "") { MessageBox.Show("El campo 'Codigo del Producto' es obligatorio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             if (txtCosto.Text == "") { MessageBox.Show("el campo 'Costo' es obligatorio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             if (txtCantidad.Text == "") { MessageBox.Show("el campo 'Cantidad' es obligatorio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-
+            //Termina Validacion de campos solos
             if (validacion != false)
             {
                 //Codigo Aqui
