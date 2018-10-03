@@ -123,6 +123,9 @@
     <Compile Include="ModelDB\PROVEEDORES.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\reporte_Result.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\sysdiagrams.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>

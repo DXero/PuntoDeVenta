@@ -125,6 +125,17 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="idProductos" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'sistema.dbo.CPROD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CPROD">
+          <Property Name="codigoBarra" Type="nvarchar" MaxLength="150" />
+          <Property Name="descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="existencia" Type="int" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="100" />
+          <Property Name="precio" Type="float" />
+          <Property Name="costo" Type="float" />
+          <Property Name="Descuento" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
         <Association Name="FK_COMPRAS_COMPRAS">
           <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="0..1" />
           <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
@@ -209,6 +220,9 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="reporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="sistemaModelStoreContainer">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
@@ -332,6 +346,9 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
             <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
           </AssociationSet>
+          <FunctionImport Name="reporte" ReturnType="Collection(sistemaModel.reporte_Result)">
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="CLIENTES">
           <Key>
@@ -516,6 +533,11 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="reporte_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CANTIDAD" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -651,6 +673,15 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="reporte" FunctionName="sistemaModel.Store.reporte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaModel.reporte_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

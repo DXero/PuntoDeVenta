@@ -10,11 +10,11 @@
 namespace PuntoDeVenta.ModelDB
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Configuracion
+    public partial class reporte_Result
     {
-        public string NombreEmpresa { get; set; }
-        public Nullable<int> campo { get; set; }
+        public int ID { get; set; }
+        public string DESCRIPCION { get; set; }
+        public Nullable<int> CANTIDAD { get; set; }
     }
 }
