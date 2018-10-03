@@ -135,6 +135,24 @@
     <Compile Include="ModelDB\VENCIMIENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\VistaProductos.cs">
+      <DependentUpon>Vistas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Productos\Producto Modificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,11 +210,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="sistemaDataSet41.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
     </Compile>
     <Compile Include="Tabla.cs">
       <SubType>Form</SubType>
@@ -296,6 +309,13 @@
     <None Include="ModelDB\ModeloDB.edmx.diagram">
       <DependentUpon>ModeloDB.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="ModelDB\Vistas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Vistas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelDB\Vistas.edmx.diagram">
+      <DependentUpon>Vistas.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -350,17 +370,6 @@
     <None Include="sistemaDataSet3.xss">
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
     </None>
-    <None Include="sistemaDataSet41.xsc">
-      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
-    </None>
-    <None Include="sistemaDataSet41.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sistemaDataSet41.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sistemaDataSet41.xss">
-      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
-    </None>
     <None Include="TablaUs.xsc">
       <DependentUpon>TablaUs.xsd</DependentUpon>
     </None>
@@ -387,6 +396,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloDB.edmx</DependentUpon>
       <LastGenOutput>ModeloDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelDB\Vistas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Vistas.edmx</DependentUpon>
+      <LastGenOutput>Vistas.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelDB\Vistas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Vistas.edmx</DependentUpon>
+      <LastGenOutput>Vistas.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
