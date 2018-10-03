@@ -126,8 +126,8 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="fecha" Type="date" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'sistema.dbo.CPROD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CPROD">
+warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VistaProductos">
           <Property Name="codigoBarra" Type="nvarchar" MaxLength="150" />
           <Property Name="descripcion" Type="nchar" MaxLength="100" />
           <Property Name="existencia" Type="int" />
@@ -347,7 +347,7 @@ warning 6013: The table/view 'sistema.dbo.CPROD' does not have a primary key def
             <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
           </AssociationSet>
           <FunctionImport Name="reporte" ReturnType="Collection(sistemaModel.reporte_Result)">
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+          <Parameter Name="cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="CLIENTES">
@@ -696,7 +696,7 @@ warning 6013: The table/view 'sistema.dbo.CPROD' does not have a primary key def
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

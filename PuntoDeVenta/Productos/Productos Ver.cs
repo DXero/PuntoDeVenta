@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PuntoDeVenta.ModelDB;
+
 namespace PuntoDeVenta.Productos
 {
     public partial class Productos_Ver : Form
@@ -15,6 +17,13 @@ namespace PuntoDeVenta.Productos
         public Productos_Ver()
         {
             InitializeComponent();
+        }
+
+        private void Productos_Ver_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'sistemaDataSet4.VistaProductos' table. You can move, or remove it, as needed.
+            this.vistaProductosTableAdapter.Fill(this.sistemaDataSet4.VistaProductos);
+
         }
     }
 }
