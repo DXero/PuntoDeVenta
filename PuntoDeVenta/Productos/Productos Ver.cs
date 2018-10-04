@@ -29,5 +29,11 @@ namespace PuntoDeVenta.Productos
         {
 
         }
+
+        private void Productos_Ver_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'sistemaDataSet41.CPROD' Puede moverla o quitarla según sea necesario.
+            this.cPRODTableAdapter.Fill(this.sistemaDataSet41.CPROD);
+        }
     }
 }
