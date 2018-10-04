@@ -18,16 +18,16 @@ namespace PuntoDeVenta.Productos
         {
             InitializeComponent();
 
-            /*using(var context = new ModelVista())
+            using(var context = new ModelVista())
             {
-                dataGridView1.DataSource = context.VistaProductos.ToList();
-            }*/
+                dataGridView2.DataSource = context.VistaProductos.ToList();
+            }
 
         }
 
         private void Productos_Ver_Load(object sender, EventArgs e)
         {
-
+            
         }
 
 
