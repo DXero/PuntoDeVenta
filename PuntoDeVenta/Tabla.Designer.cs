@@ -32,13 +32,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.sistemaDataSet = new PuntoDeVenta.sistemaDataSet();
             this.pROVEEDORESBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pROVEEDORESTableAdapter = new PuntoDeVenta.sistemaDataSetTableAdapters.PROVEEDORESTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contactoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.correoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pROVEEDORESTableAdapter = new PuntoDeVenta.sistemaDataSetTableAdapters.PROVEEDORESTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pROVEEDORESBindingSource)).BeginInit();
@@ -46,7 +46,6 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -55,7 +54,6 @@
             this.correoDataGridViewTextBoxColumn,
             this.activoDataGridViewCheckBoxColumn,
             this.contactoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.pROVEEDORESBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(21, 21);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
@@ -72,9 +70,35 @@
             this.pROVEEDORESBindingSource.DataMember = "PROVEEDORES";
             this.pROVEEDORESBindingSource.DataSource = this.sistemaDataSet;
             // 
-            // pROVEEDORESTableAdapter
+            // contactoDataGridViewTextBoxColumn
             // 
-            this.pROVEEDORESTableAdapter.ClearBeforeFill = true;
+            this.contactoDataGridViewTextBoxColumn.DataPropertyName = "contacto";
+            this.contactoDataGridViewTextBoxColumn.HeaderText = "contacto";
+            this.contactoDataGridViewTextBoxColumn.Name = "contactoDataGridViewTextBoxColumn";
+            // 
+            // activoDataGridViewCheckBoxColumn
+            // 
+            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "activo";
+            this.activoDataGridViewCheckBoxColumn.HeaderText = "activo";
+            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
+            // 
+            // correoDataGridViewTextBoxColumn
+            // 
+            this.correoDataGridViewTextBoxColumn.DataPropertyName = "correo";
+            this.correoDataGridViewTextBoxColumn.HeaderText = "correo";
+            this.correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
+            // 
+            // telefonoDataGridViewTextBoxColumn
+            // 
+            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "telefono";
+            this.telefonoDataGridViewTextBoxColumn.HeaderText = "telefono";
+            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
+            // 
+            // nombreEmpresaDataGridViewTextBoxColumn
+            // 
+            this.nombreEmpresaDataGridViewTextBoxColumn.DataPropertyName = "nombreEmpresa";
+            this.nombreEmpresaDataGridViewTextBoxColumn.HeaderText = "nombreEmpresa";
+            this.nombreEmpresaDataGridViewTextBoxColumn.Name = "nombreEmpresaDataGridViewTextBoxColumn";
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -83,35 +107,9 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // nombreEmpresaDataGridViewTextBoxColumn
+            // pROVEEDORESTableAdapter
             // 
-            this.nombreEmpresaDataGridViewTextBoxColumn.DataPropertyName = "nombreEmpresa";
-            this.nombreEmpresaDataGridViewTextBoxColumn.HeaderText = "nombreEmpresa";
-            this.nombreEmpresaDataGridViewTextBoxColumn.Name = "nombreEmpresaDataGridViewTextBoxColumn";
-            // 
-            // telefonoDataGridViewTextBoxColumn
-            // 
-            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
-            // 
-            // correoDataGridViewTextBoxColumn
-            // 
-            this.correoDataGridViewTextBoxColumn.DataPropertyName = "correo";
-            this.correoDataGridViewTextBoxColumn.HeaderText = "correo";
-            this.correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            // 
-            // contactoDataGridViewTextBoxColumn
-            // 
-            this.contactoDataGridViewTextBoxColumn.DataPropertyName = "contacto";
-            this.contactoDataGridViewTextBoxColumn.HeaderText = "contacto";
-            this.contactoDataGridViewTextBoxColumn.Name = "contactoDataGridViewTextBoxColumn";
+            this.pROVEEDORESTableAdapter.ClearBeforeFill = true;
             // 
             // Tabla
             // 
@@ -132,14 +130,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private sistemaDataSet sistemaDataSet;
-        private System.Windows.Forms.BindingSource pROVEEDORESBindingSource;
-        private sistemaDataSetTableAdapters.PROVEEDORESTableAdapter pROVEEDORESTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreEmpresaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactoDataGridViewTextBoxColumn;
+        private sistemaDataSet sistemaDataSet;
+        private System.Windows.Forms.BindingSource pROVEEDORESBindingSource;
+        private sistemaDataSetTableAdapters.PROVEEDORESTableAdapter pROVEEDORESTableAdapter;
     }
 }

@@ -66,6 +66,12 @@
     <Compile Include="Clientes\cliente form.Designer.cs">
       <DependentUpon>cliente form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compras\Anulado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Anulado.Designer.cs">
+      <DependentUpon>Anulado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compras\FormularioCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="ModelDB\PROVEEDORES.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\reporte_Result.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\sysdiagrams.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
@@ -125,6 +134,24 @@
     </Compile>
     <Compile Include="ModelDB\VENCIMIENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\VistaProductos.cs">
+      <DependentUpon>Vistas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\Vistas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vistas.edmx</DependentUpon>
     </Compile>
     <Compile Include="Productos\Producto Modificar.cs">
       <SubType>Form</SubType>
@@ -228,6 +255,9 @@
     <EmbeddedResource Include="Clientes\cliente form.resx">
       <DependentUpon>cliente form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Anulado.resx">
+      <DependentUpon>Anulado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compras\FormularioCompras.resx">
       <DependentUpon>FormularioCompras.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +313,13 @@
     <None Include="App.config" />
     <None Include="ModelDB\ModeloDB.edmx.diagram">
       <DependentUpon>ModeloDB.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="ModelDB\Vistas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Vistas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelDB\Vistas.edmx.diagram">
+      <DependentUpon>Vistas.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -375,6 +412,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloDB.edmx</DependentUpon>
       <LastGenOutput>ModeloDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelDB\Vistas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Vistas.edmx</DependentUpon>
+      <LastGenOutput>Vistas.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelDB\Vistas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Vistas.edmx</DependentUpon>
+      <LastGenOutput>Vistas.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

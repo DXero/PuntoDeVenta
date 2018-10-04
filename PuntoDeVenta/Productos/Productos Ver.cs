@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PuntoDeVenta.ModelDB;
+
 namespace PuntoDeVenta.Productos
 {
     public partial class Productos_Ver : Form
@@ -15,6 +17,17 @@ namespace PuntoDeVenta.Productos
         public Productos_Ver()
         {
             InitializeComponent();
+
+            using(var context = new ModelVista())
+            {
+                dataGridView1.DataSource = context.VistaProductos.ToList();
+            }
+
+        }
+
+        private void Productos_Ver_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void Productos_Ver_Load(object sender, EventArgs e)

@@ -33,5 +33,16 @@ namespace PuntoDeVenta.Properties {
                 return ((string)(this["sistemaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=herrera.database.windows.net;Initial Catalog=ejemplo;User ID=usuario;" +
+            "Password=Cri.2018")]
+        public string ejemploConnectionString {
+            get {
+                return ((string)(this["ejemploConnectionString"]));
+            }
+        }
     }
 }
