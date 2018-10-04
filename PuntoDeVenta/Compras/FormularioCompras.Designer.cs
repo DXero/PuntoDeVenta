@@ -41,7 +41,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.FechaFin = new System.Windows.Forms.DateTimePicker();
@@ -50,7 +49,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.cbcodigoProducto = new System.Windows.Forms.ComboBox();
+            this.cbdescuento = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -188,15 +188,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Codigo del producto:";
             // 
-            // txtCodProducto
-            // 
-            this.txtCodProducto.Location = new System.Drawing.Point(149, 249);
-            this.txtCodProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(126, 20);
-            this.txtCodProducto.TabIndex = 16;
-            this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProducto_KeyPress);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -276,21 +267,31 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Descuento:";
             // 
-            // txtDescuento
+            // cbcodigoProducto
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(610, 207);
-            this.txtDescuento.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(152, 20);
-            this.txtDescuento.TabIndex = 26;
-            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
+            this.cbcodigoProducto.FormattingEnabled = true;
+            this.cbcodigoProducto.Location = new System.Drawing.Point(149, 245);
+            this.cbcodigoProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.cbcodigoProducto.Name = "cbcodigoProducto";
+            this.cbcodigoProducto.Size = new System.Drawing.Size(126, 21);
+            this.cbcodigoProducto.TabIndex = 22;
+            // 
+            // cbdescuento
+            // 
+            this.cbdescuento.FormattingEnabled = true;
+            this.cbdescuento.Location = new System.Drawing.Point(584, 207);
+            this.cbdescuento.Margin = new System.Windows.Forms.Padding(2);
+            this.cbdescuento.Name = "cbdescuento";
+            this.cbdescuento.Size = new System.Drawing.Size(178, 21);
+            this.cbdescuento.TabIndex = 27;
             // 
             // FormularioCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 587);
-            this.Controls.Add(this.txtDescuento);
+            this.Controls.Add(this.cbdescuento);
+            this.Controls.Add(this.cbcodigoProducto);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label6);
@@ -303,7 +304,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCodProducto);
             this.Name = "FormularioCompras";
             this.Text = "Formulario de Compras";
             this.Load += new System.EventHandler(this.FormularioCompras_Load);
@@ -328,7 +328,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCodProducto;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCosto;
@@ -339,6 +338,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDescuento;
+        private System.Windows.Forms.ComboBox cbcodigoProducto;
+        private System.Windows.Forms.ComboBox cbdescuento;
     }
 }
