@@ -18,12 +18,16 @@ namespace PuntoDeVenta.Compras
         {
             InitializeComponent();
 
-           
-           
+            objeto.Columns.Add("codigo");
+            objeto.Columns.Add("costo");
+            objeto.Columns.Add("cantida");
+            objeto.Columns.Add("descuento");
+            objeto.Columns.Add("fechaVencimiento");
+
             using (var datos = new sistemaDataSet3())
             {
 
-                cbxProveedor.DataSource = datos.PROVEEDORES.Select(c => new { c.id, c.nombreEmpresa }).ToString();
+                cbxProveedor.DataSource = datos.PROVEEDORES.Select(c => new { c.id, c.nombreEmpresa }).ToList();
             }
             cbxProveedor.DisplayMember= "nombreEmpresa";
             cbxProveedor.ValueMember = "id";
@@ -101,8 +105,50 @@ namespace PuntoDeVenta.Compras
             if (cbxProveedor.Text == "") { MessageBox.Show("Se debe de especificar el 'Proveedor'", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
             //termina validacion de campos solos
             if (validacion != false)
-            { 
-                    //Codigo Aqui
+            {
+                //Codigo Aqui
+                using (var db = new ModelDB.Contexto())
+                {
+                    // se creo este objeto de compra para poder  hacer el insert en la tabla compras
+                    ModelDB.COMPRAS compra = new ModelDB.COMPRAS();
+                    compra.IdProveedor =int.Parse( cbxProveedor.SelectedValue.ToString());
+                    compra.Fecha= Fecha.Value;
+                    compra.Comentario = txtComentario.Text;
+                    compra.IdUsuario = "elish";
+                    db.COMPRAS.Add(compra);
+                    
+
+
+                    ModelDB.VENCIMIENTOS vence = new ModelDB.VENCIMIENTOS();
+                    ModelDB.DETALLE_COMPRA detalles = new ModelDB.DETALLE_COMPRA();
+
+        
+                    // este for  recorre el grib (tolas las filas) para poder meter los datos alas tablas de vencimiento y de 
+                    //detalle de la compra
+
+                    for (int i = 0; i < dataGridView1.RowCount -1; i++)
+                    {
+                        //  hace el insert en la tabla vencimiento
+
+                        //vence.fecha = DataSetDateTime(dataGridView1.Rows[i].Cells["fechaVencimiento"].Value.ToString());
+                        vence.idProductos = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
+                        db.VENCIMIENTOS.Add(vence);
+
+
+                        // hacer el insert en la tabla detalle de compra
+                        detalles.Costo = int.Parse(dataGridView1.Rows[i].Cells["costo"].Value.ToString());
+                        detalles.Cantidad = int.Parse(dataGridView1.Rows[i].Cells["cantida"].Value.ToString());
+                        detalles.Descuento= int.Parse(dataGridView1.Rows[i].Cells["descuento"].Value.ToString());
+                        //detalles.IdCompras= 
+                        detalles.IdProducto= int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
+                        db.DETALLE_COMPRA.Add(detalles);
+                    };
+
+                    db.SaveChanges();
+
+                }
+
+                
             }
     }
 
@@ -140,11 +186,7 @@ namespace PuntoDeVenta.Compras
             if (validacion != false)
             {
 
-                objeto.Columns.Add("codigo");
-                objeto.Columns.Add("costo");
-                objeto.Columns.Add("cantida");
-                objeto.Columns.Add("descuento");
-                objeto.Columns.Add("fechaVencimiento");
+              
 
                 objeto.Rows.Add(txtCodProducto.Text, txtCosto.Text, txtCantidad.Text,txtDescuento.Text,FechaFin.Text);
                 dataGridView1.DataSource = objeto;

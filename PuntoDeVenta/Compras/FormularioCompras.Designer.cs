@@ -162,9 +162,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(25, 397);
+            this.groupBox2.Location = new System.Drawing.Point(25, 307);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(635, 263);
+            this.groupBox2.Size = new System.Drawing.Size(752, 235);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de compra";
@@ -173,15 +173,15 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(623, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(728, 210);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 243);
+            this.label1.Location = new System.Drawing.Point(31, 249);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
@@ -190,7 +190,7 @@
             // 
             // txtCodProducto
             // 
-            this.txtCodProducto.Location = new System.Drawing.Point(306, 243);
+            this.txtCodProducto.Location = new System.Drawing.Point(149, 249);
             this.txtCodProducto.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodProducto.Name = "txtCodProducto";
             this.txtCodProducto.Size = new System.Drawing.Size(126, 20);
@@ -200,7 +200,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(188, 204);
+            this.label7.Location = new System.Drawing.Point(31, 210);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 13);
@@ -210,7 +210,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(190, 286);
+            this.label8.Location = new System.Drawing.Point(303, 210);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
@@ -221,7 +221,7 @@
             // FechaFin
             // 
             this.FechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaFin.Location = new System.Drawing.Point(306, 201);
+            this.FechaFin.Location = new System.Drawing.Point(149, 207);
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.Size = new System.Drawing.Size(126, 20);
             this.FechaFin.TabIndex = 20;
@@ -229,7 +229,7 @@
             // 
             // txtCosto
             // 
-            this.txtCosto.Location = new System.Drawing.Point(306, 286);
+            this.txtCosto.Location = new System.Drawing.Point(377, 207);
             this.txtCosto.Margin = new System.Windows.Forms.Padding(2);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(126, 20);
@@ -238,10 +238,10 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(535, 259);
+            this.btnAgregar.Location = new System.Drawing.Point(521, 242);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(59, 30);
+            this.btnAgregar.Size = new System.Drawing.Size(241, 27);
             this.btnAgregar.TabIndex = 22;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(188, 325);
+            this.label6.Location = new System.Drawing.Point(303, 249);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
@@ -259,7 +259,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(306, 328);
+            this.txtCantidad.Location = new System.Drawing.Point(377, 246);
             this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(126, 20);
@@ -269,7 +269,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(190, 358);
+            this.label9.Location = new System.Drawing.Point(518, 210);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 13);
@@ -278,10 +278,10 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(306, 365);
+            this.txtDescuento.Location = new System.Drawing.Point(610, 207);
             this.txtDescuento.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(126, 20);
+            this.txtDescuento.Size = new System.Drawing.Size(152, 20);
             this.txtDescuento.TabIndex = 26;
             this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 
