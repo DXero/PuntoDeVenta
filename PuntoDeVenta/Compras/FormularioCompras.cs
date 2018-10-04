@@ -13,10 +13,22 @@ namespace PuntoDeVenta.Compras
 {
     public partial class FormularioCompras : Form
     {
+        DataTable objeto = new DataTable();
         public FormularioCompras()
         {
             InitializeComponent();
+
+           
+           
+            using (var datos = new sistemaDataSet3())
+            {
+
+                cbxProveedor.DataSource = datos.PROVEEDORES.Select(c => new { c.id, c.nombreEmpresa }).ToString();
+            }
+            cbxProveedor.DisplayMember= "nombreEmpresa";
+            cbxProveedor.ValueMember = "id";
         }
+
         bool validacion = true;
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -127,7 +139,15 @@ namespace PuntoDeVenta.Compras
             //Termina Validacion de campos solos
             if (validacion != false)
             {
-                //Codigo Aqui
+
+                objeto.Columns.Add("codigo");
+                objeto.Columns.Add("costo");
+                objeto.Columns.Add("cantida");
+                objeto.Columns.Add("descuento");
+                objeto.Columns.Add("fechaVencimiento");
+
+                objeto.Rows.Add(txtCodProducto.Text, txtCosto.Text, txtCantidad.Text,txtDescuento.Text,FechaFin.Text);
+                dataGridView1.DataSource = objeto;
             }
         }
     }
