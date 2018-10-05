@@ -17,13 +17,14 @@ namespace PuntoDeVenta.Compras
         public FormularioCompras()
         {
             InitializeComponent();
-
+            // aqui se definen las columnas que tendra el gribview 
             objeto.Columns.Add("codigo");
             objeto.Columns.Add("costo");
             objeto.Columns.Add("cantida");
             objeto.Columns.Add("descuento");
             objeto.Columns.Add("fechaVencimiento");
-
+            // aqui se llenan los combobox  y se detalla que es lo que vera el usuario y lo que 
+            //  se evaluara al seleccionar en el combobox
             using (var datos = new sistemaDataSet3())
             {
 
@@ -110,7 +111,7 @@ namespace PuntoDeVenta.Compras
                 return;
             }
         }
-
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             validacion = true;
@@ -119,15 +120,12 @@ namespace PuntoDeVenta.Compras
             //termina validacion de campos solos
             if (validacion != false)
             {
-              
+                // utilizacion de una transacion para poder hacer el cambio en los diferentes tablas  de la base de datos
                  using (TransactionScope tr = new TransactionScope())
                  {
 
                     try
-                    {
-
-                        //Codigo Aqui
-                        int idcom;
+                    {                      
                         using (var db = new ModelDB.Contexto())
                         {
                             // se creo este objeto de compra para poder  hacer el insert en la tabla compras
@@ -137,45 +135,38 @@ namespace PuntoDeVenta.Compras
                             compra.Comentario = txtComentario.Text;
                             compra.IdUsuario = "elish";
                             db.COMPRAS.Add(compra);
-
-                            using (var context = new ModelDB.Contexto())
-                            {
-                                var dato = context.COMPRAS.SqlQuery("SELECT count(*) FROM compras").First();/*First<ModelDB.Configuracion>();*/
-
-                                idcom = int.Parse(Convert.ToString(dato.IdCompra));
-                            }
-
-
-                            ModelDB.VENCIMIENTOS vence = new ModelDB.VENCIMIENTOS();
-                            ModelDB.DETALLE_COMPRA detalles = new ModelDB.DETALLE_COMPRA();
-
-
-                            // este for  recorre el grib (tolas las filas) para poder meter los datos alas tablas de vencimiento y de 
-                            //detalle de la compra
+                            db.SaveChanges();
 
                             for (int i = 0; i < dataGridView1.RowCount - 1; i++)
                             {
-                                //  hace el insert en la tabla vencimiento
+                              
 
-                                //vence.fecha = DataSetDateTime(dataGridView1.Rows[i].Cells["fechaVencimiento"].Value.ToString());
-                                vence.idProductos = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
-                                vence.idProductos = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
-                                db.VENCIMIENTOS.Add(vence);
-
-
-                                // hacer el insert en la tabla detalle de compra
+                                // se hacer el insert en la tabla detalle de compra
+                                ModelDB.DETALLE_COMPRA detalles = new ModelDB.DETALLE_COMPRA();
                                 detalles.Costo = int.Parse(dataGridView1.Rows[i].Cells["costo"].Value.ToString());
-                                detalles.Cantidad = int.Parse(dataGridView1.Rows[i].Cells["cantida"].Value.ToString());
-
-
-                                // falta actualizar la existencia en el producto por cada cantida agregada
+                                detalles.Cantidad = int.Parse(dataGridView1.Rows[i].Cells["cantida"].Value.ToString());                               
                                 detalles.Descuento = int.Parse(dataGridView1.Rows[i].Cells["descuento"].Value.ToString());
-                                detalles.IdCompras = idcom;
+                                detalles.IdCompras = compra.IdCompra;
                                 detalles.IdProducto = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
                                 db.DETALLE_COMPRA.Add(detalles);
-                            };
+                                db.SaveChanges();
+                                
+                               
+                                // aqui se hace el uppdate la campo  existencia  del produto
+                                ModelDB.PRODUCTOS product = new ModelDB.PRODUCTOS();
+                                product = db.PRODUCTOS.Where(x => x.idProductos == int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString())).Single(); 
+                                product.existencia+= int.Parse(dataGridView1.Rows[i].Cells["cantida"].Value.ToString());                             
+                                db.SaveChanges();
 
-                            db.SaveChanges();
+                                //  se hace el insert en la tabla vencimiento
+                                ModelDB.VENCIMIENTOS vence = new ModelDB.VENCIMIENTOS();
+                                vence.idProductos = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
+                                vence.fecha = Convert.ToDateTime(dataGridView1.Rows[i].Cells["fechaVencimiento"].Value.ToString());
+                                db.VENCIMIENTOS.Add(vence);
+                                db.SaveChanges();
+
+                            };
+                           
                         }
 
                         tr.Complete();
@@ -224,9 +215,6 @@ namespace PuntoDeVenta.Compras
             //Termina Validacion de campos solos
             if (validacion != false)
             {
-
-              
-
                 objeto.Rows.Add(cbcodigoProducto.SelectedValue.ToString(), txtCosto.Text, txtCantidad.Text,cbdescuento.SelectedValue.ToString(),FechaFin.Text);
                 dataGridView1.DataSource = objeto;
             }
