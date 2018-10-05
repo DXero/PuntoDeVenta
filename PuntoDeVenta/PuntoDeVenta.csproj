@@ -49,7 +49,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -212,6 +211,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="sistemaDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sistemaDataSet41.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tabla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +316,7 @@
       <LastGenOutput>ModeloDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="ModelDB\ModeloDB.edmx.diagram">
       <DependentUpon>ModeloDB.edmx</DependentUpon>
     </None>
@@ -370,6 +380,28 @@
     </None>
     <None Include="sistemaDataSet3.xss">
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet4.xsc">
+      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet4.xss">
+      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet41.xsc">
+      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
+    </None>
+    <None Include="sistemaDataSet41.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sistemaDataSet41.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistemaDataSet41.xss">
+      <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
     </None>
     <None Include="TablaUs.xsc">
       <DependentUpon>TablaUs.xsd</DependentUpon>

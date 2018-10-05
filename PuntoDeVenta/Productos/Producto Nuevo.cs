@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PuntoDeVenta.ModelDB;
 namespace PuntoDeVenta.Productos
 {
     public partial class Producto_Nuevo : Form
@@ -15,6 +15,10 @@ namespace PuntoDeVenta.Productos
         public Producto_Nuevo()
         {
             InitializeComponent();
+            foreach(var a in new Contexto().CATEGORIA.ToList())
+            cb_Categoria.Items.Add(a.descripcion);
+            foreach (var a in new Contexto().DESCUENTOS.ToList())
+                cb_Descuento.Items.Add(a.descripcion);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -116,6 +120,21 @@ namespace PuntoDeVenta.Productos
                 MessageBox.Show("Solo se admiten datos numéricos", "validación de números",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            if(txt_Codigo.Text.Length > 0 && txt_Costo.Text.Length > 0 && txt_Descripcion.Text.Length > 0 && txt_Precio.Text.Length > 0 && cb_Descuento.Text.Length > 0 && cb_Categoria.Text.Length > 0)
+            {
+                var Guardar = new Contexto();
+                Guardar.PRODUCTOS.Add(new PRODUCTOS() { codigoBarra = txt_Codigo.Text, activo = ck_activo.Checked, descripcion = txt_Descripcion.Text,
+                precio = int.Parse(txt_Precio.Text), costo = int.Parse(txt_Costo.Text),
+                idCategoria = new Contexto().CATEGORIA.Where(st => st.descripcion == cb_Categoria.SelectedItem.ToString()).First().idCategoria,
+                idDescuentos = new Contexto().DESCUENTOS.Where(st => st.descripcion == cb_Descuento.SelectedItem.ToString()).First().idDescuento
+            });
+                Guardar.SaveChanges();Close();
+               
+        }
         }
     }
 }
