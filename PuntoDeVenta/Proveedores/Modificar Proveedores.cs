@@ -14,6 +14,7 @@ namespace PuntoDeVenta.Proveedores
     public partial class Modificar_Proveedores : Form
     {
         private PROVEEDORES Proveedor;
+
         private Contexto Modificar = new Contexto();
         public Modificar_Proveedores(int id)
         {

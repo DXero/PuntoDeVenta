@@ -41,7 +41,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.FechaFin = new System.Windows.Forms.DateTimePicker();
@@ -50,7 +49,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.cbcodigoProducto = new System.Windows.Forms.ComboBox();
+            this.cbdescuento = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -162,9 +162,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(25, 397);
+            this.groupBox2.Location = new System.Drawing.Point(25, 307);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(635, 263);
+            this.groupBox2.Size = new System.Drawing.Size(752, 235);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de compra";
@@ -173,34 +173,25 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(623, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(728, 210);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 243);
+            this.label1.Location = new System.Drawing.Point(31, 249);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Codigo del producto:";
             // 
-            // txtCodProducto
-            // 
-            this.txtCodProducto.Location = new System.Drawing.Point(306, 243);
-            this.txtCodProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(126, 20);
-            this.txtCodProducto.TabIndex = 16;
-            this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProducto_KeyPress);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(188, 204);
+            this.label7.Location = new System.Drawing.Point(31, 210);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 13);
@@ -210,7 +201,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(190, 286);
+            this.label8.Location = new System.Drawing.Point(303, 210);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
@@ -221,7 +212,7 @@
             // FechaFin
             // 
             this.FechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaFin.Location = new System.Drawing.Point(306, 201);
+            this.FechaFin.Location = new System.Drawing.Point(149, 207);
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.Size = new System.Drawing.Size(126, 20);
             this.FechaFin.TabIndex = 20;
@@ -229,7 +220,7 @@
             // 
             // txtCosto
             // 
-            this.txtCosto.Location = new System.Drawing.Point(306, 286);
+            this.txtCosto.Location = new System.Drawing.Point(377, 207);
             this.txtCosto.Margin = new System.Windows.Forms.Padding(2);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(126, 20);
@@ -238,10 +229,10 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(535, 259);
+            this.btnAgregar.Location = new System.Drawing.Point(521, 242);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(59, 30);
+            this.btnAgregar.Size = new System.Drawing.Size(241, 27);
             this.btnAgregar.TabIndex = 22;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -250,7 +241,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(188, 325);
+            this.label6.Location = new System.Drawing.Point(303, 249);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
@@ -259,7 +250,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(306, 328);
+            this.txtCantidad.Location = new System.Drawing.Point(377, 246);
             this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(126, 20);
@@ -269,28 +260,38 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(190, 358);
+            this.label9.Location = new System.Drawing.Point(518, 210);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 13);
             this.label9.TabIndex = 25;
             this.label9.Text = "Descuento:";
             // 
-            // txtDescuento
+            // cbcodigoProducto
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(306, 365);
-            this.txtDescuento.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(126, 20);
-            this.txtDescuento.TabIndex = 26;
-            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
+            this.cbcodigoProducto.FormattingEnabled = true;
+            this.cbcodigoProducto.Location = new System.Drawing.Point(149, 245);
+            this.cbcodigoProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.cbcodigoProducto.Name = "cbcodigoProducto";
+            this.cbcodigoProducto.Size = new System.Drawing.Size(126, 21);
+            this.cbcodigoProducto.TabIndex = 22;
+            // 
+            // cbdescuento
+            // 
+            this.cbdescuento.FormattingEnabled = true;
+            this.cbdescuento.Location = new System.Drawing.Point(584, 207);
+            this.cbdescuento.Margin = new System.Windows.Forms.Padding(2);
+            this.cbdescuento.Name = "cbdescuento";
+            this.cbdescuento.Size = new System.Drawing.Size(178, 21);
+            this.cbdescuento.TabIndex = 27;
             // 
             // FormularioCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 587);
-            this.Controls.Add(this.txtDescuento);
+            this.Controls.Add(this.cbdescuento);
+            this.Controls.Add(this.cbcodigoProducto);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label6);
@@ -303,7 +304,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCodProducto);
             this.Name = "FormularioCompras";
             this.Text = "Formulario de Compras";
             this.Load += new System.EventHandler(this.FormularioCompras_Load);
@@ -328,7 +328,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCodProducto;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCosto;
@@ -339,6 +338,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDescuento;
+        private System.Windows.Forms.ComboBox cbcodigoProducto;
+        private System.Windows.Forms.ComboBox cbdescuento;
     }
 }
