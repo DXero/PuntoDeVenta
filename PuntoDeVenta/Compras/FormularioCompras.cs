@@ -170,10 +170,11 @@ namespace PuntoDeVenta.Compras
                         }
 
                         tr.Complete();
+                        MessageBox.Show("Transación exitosa");
                     }
                     catch (Exception)
                     {
-                        
+                        MessageBox.Show("Error en la transación");
                         throw;
                     }
                 }//fin transactions
@@ -218,6 +219,13 @@ namespace PuntoDeVenta.Compras
                 objeto.Rows.Add(cbcodigoProducto.SelectedValue.ToString(), txtCosto.Text, txtCantidad.Text,cbdescuento.SelectedValue.ToString(),FechaFin.Text);
                 dataGridView1.DataSource = objeto;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtCosto.Text ="";
+            txtCantidad.Text = "";
+            txtComentario.Text = "";
         }
     }
 }
