@@ -349,6 +349,8 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <FunctionImport Name="reporte" ReturnType="Collection(sistemaModel.reporte_Result)">
           <Parameter Name="cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="VENTAS" EntityType="sistemaModel.VENTAS" />
+          <EntitySet Name="DETTALEVENTAS" EntityType="sistemaModel.DETTALEVENTAS" />
         </EntityContainer>
         <EntityType Name="CLIENTES">
           <Key>
@@ -538,6 +540,28 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="CANTIDAD" Nullable="true" />
         </ComplexType>
+        <EntityType Name="VENTAS">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="String" Nullable="false" />
+          <Property Name="hora" Type="String" Nullable="false" />
+          <Property Name="idUsuario" Type="String" Nullable="false" />
+          <Property Name="anulado" Type="Boolean" />
+          <Property Name="motivo" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <Property Name="idCliente" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETTALEVENTAS">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProducto" Type="String" Nullable="false" />
+          <Property Name="Cantidad" Type="String" Nullable="false" />
+          <Property Name="precio" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
