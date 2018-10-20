@@ -24,7 +24,7 @@
         <AssociationConnector Association="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" />
         <AssociationConnector Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" />
         <EntityTypeShape EntityType="sistemaModel.VENTAS" Width="1.5" PointX="10.625" PointY="2.375" />
-        <EntityTypeShape EntityType="sistemaModel.DETTALEVENTAS" Width="1.5" PointX="12.75" PointY="2.375" />
+        <EntityTypeShape EntityType="sistemaModel.DETALLEVENTAS" Width="1.5" PointX="12.75" PointY="2.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

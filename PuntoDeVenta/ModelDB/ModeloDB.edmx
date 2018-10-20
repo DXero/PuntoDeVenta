@@ -350,7 +350,7 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Parameter Name="cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="VENTAS" EntityType="sistemaModel.VENTAS" />
-          <EntitySet Name="DETTALEVENTAS" EntityType="sistemaModel.DETTALEVENTAS" />
+          <EntitySet Name="DETALLEVENTAS" EntityType="sistemaModel.DETALLEVENTAS" />
         </EntityContainer>
         <EntityType Name="CLIENTES">
           <Key>
@@ -553,14 +553,17 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Name="descripcion" Type="String" Nullable="false" />
           <Property Name="idCliente" Type="String" Nullable="false" />
         </EntityType>
-        <EntityType Name="DETTALEVENTAS">
+        <EntityType Name="DETALLEVENTAS">
           <Key>
-            <PropertyRef Name="IdVenta" />
+            <PropertyRef Name="idDetalle" />
           </Key>
-          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idProducto" Type="String" Nullable="false" />
+          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cantidad" Type="String" Nullable="false" />
           <Property Name="precio" Type="String" Nullable="false" />
+          <Property Name="codproducto" Type="String" Nullable="false" />
+          <Property Name="descuento" Type="String" Nullable="false" />
+          <Property Name="idProducto" Type="String" Nullable="false" />
+          <Property Name="idVenta" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
