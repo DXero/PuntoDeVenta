@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3656fde8133c4dcc91e049723e8e6b2c" Name="Diagram1" ZoomLevel="124">
+      <Diagram DiagramId="3656fde8133c4dcc91e049723e8e6b2c" Name="Diagram1" ZoomLevel="60">
         <EntityTypeShape EntityType="sistemaModel.PROVEEDORES" Width="1.5" PointX="3.125" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sistemaModel.Usuarios" Width="1.5" PointX="2.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sistemaModel.Configuracion" Width="1.5" PointX="5.5" PointY="0.625" IsExpanded="true" />
@@ -23,8 +23,13 @@
         <AssociationConnector Association="sistemaModel.FK_PRODUCTOS_DESCUENTOS" />
         <AssociationConnector Association="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" />
         <AssociationConnector Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" />
-        <EntityTypeShape EntityType="sistemaModel.VENTAS" Width="1.5" PointX="10.625" PointY="2.375" />
-        <EntityTypeShape EntityType="sistemaModel.DETALLEVENTAS" Width="1.5" PointX="12.75" PointY="2.375" />
+        <EntityTypeShape EntityType="sistemaModel.VENTA" Width="1.5" PointX="8.75" PointY="1.5" />
+        <AssociationConnector Association="sistemaModel.FK_VENTAS_CLIENTES" />
+        <AssociationConnector Association="sistemaModel.FK_VENTAS_Usuarios" />
+        <EntityTypeShape EntityType="sistemaModel.DETALLEVENTA" Width="1.5" PointX="11" PointY="2.25" />
+        <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_DESCUENTOS" />
+        <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS" />
+        <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_VENTAS" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

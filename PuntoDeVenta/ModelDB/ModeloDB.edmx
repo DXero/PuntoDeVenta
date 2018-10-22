@@ -69,6 +69,17 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="SubTotal" Type="real" />
           <Property Name="Descuento" Type="real" />
         </EntityType>
+        <EntityType Name="DETALLEVENTAS">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="real" Nullable="false" />
+          <Property Name="precio" Type="real" Nullable="false" />
+          <Property Name="IdDescuento" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idVenta" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="PRODUCTOS">
           <Key>
             <PropertyRef Name="idProductos" />
@@ -125,17 +136,18 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="idProductos" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="VistaProductos">
-          <Property Name="codigoBarra" Type="nvarchar" MaxLength="150" />
-          <Property Name="descripcion" Type="nchar" MaxLength="100" />
-          <Property Name="existencia" Type="int" />
-          <Property Name="Categoria" Type="nvarchar" MaxLength="100" />
-          <Property Name="precio" Type="float" />
-          <Property Name="costo" Type="float" />
-          <Property Name="Descuento" Type="nvarchar" MaxLength="100" />
-        </EntityType>-->
+        <EntityType Name="VENTAS">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hora" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="anulado" Type="bit" />
+          <Property Name="motivo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idCliente" Type="int" />
+        </EntityType>
         <Association Name="FK_COMPRAS_COMPRAS">
           <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="0..1" />
           <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
@@ -184,6 +196,42 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DETALLEVENTAS_DESCUENTOS">
+          <End Role="DESCUENTOS" Type="Self.DESCUENTOS" Multiplicity="1" />
+          <End Role="DETALLEVENTAS" Type="Self.DETALLEVENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESCUENTOS">
+              <PropertyRef Name="idDescuento" />
+            </Principal>
+            <Dependent Role="DETALLEVENTAS">
+              <PropertyRef Name="IdDescuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLEVENTAS_PRODUCTOS">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="DETALLEVENTAS" Type="Self.DETALLEVENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="DETALLEVENTAS">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLEVENTAS_VENTAS">
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="1" />
+          <End Role="DETALLEVENTAS" Type="Self.DETALLEVENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTAS">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DETALLEVENTAS">
+              <PropertyRef Name="idVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PRODUCTOS_CATEGORIA">
           <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
           <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
@@ -220,6 +268,30 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VENTAS_CLIENTES">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VENTAS">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENTAS_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Us_Usuario" />
+            </Principal>
+            <Dependent Role="VENTAS">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="reporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cantidad" Type="int" Mode="In" />
         </Function>
@@ -229,11 +301,13 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DESCUENTOS" EntityType="Self.DESCUENTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETALLE_COMPRA" EntityType="Self.DETALLE_COMPRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLEVENTAS" EntityType="Self.DETALLEVENTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENCIMIENTOS" EntityType="Self.VENCIMIENTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTAS" EntityType="Self.VENTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Configuracion].[NombreEmpresa] AS [NombreEmpresa], 
@@ -256,6 +330,18 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
           </AssociationSet>
+          <AssociationSet Name="FK_DETALLEVENTAS_DESCUENTOS" Association="Self.FK_DETALLEVENTAS_DESCUENTOS">
+            <End Role="DESCUENTOS" EntitySet="DESCUENTOS" />
+            <End Role="DETALLEVENTAS" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLEVENTAS_PRODUCTOS" Association="Self.FK_DETALLEVENTAS_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLEVENTAS" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLEVENTAS_VENTAS" Association="Self.FK_DETALLEVENTAS_VENTAS">
+            <End Role="VENTAS" EntitySet="VENTAS" />
+            <End Role="DETALLEVENTAS" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
           <AssociationSet Name="FK_PRODUCTOS_CATEGORIA" Association="Self.FK_PRODUCTOS_CATEGORIA">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
@@ -267,6 +353,14 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <AssociationSet Name="FK_VENCIMIENTOS_PRODUCTOS" Association="Self.FK_VENCIMIENTOS_PRODUCTOS">
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
             <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTAS_CLIENTES" Association="Self.FK_VENTAS_CLIENTES">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTAS" EntitySet="VENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTAS_Usuarios" Association="Self.FK_VENTAS_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="VENTAS" EntitySet="VENTAS" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -298,6 +392,7 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Name="Us_Estado" Type="Boolean" Nullable="false" />
           <Property Name="US_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="COMPRAS" Relationship="sistemaModel.FK_COMPRAS_Usuarios1" FromRole="Usuarios" ToRole="COMPRAS" />
+          <NavigationProperty Name="VENTAS" Relationship="sistemaModel.FK_VENTAS_Usuarios" FromRole="Usuarios" ToRole="VENTA" />
         </EntityType>
         <EntityType Name="Configuracion">
           <Key>
@@ -349,8 +444,28 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <FunctionImport Name="reporte" ReturnType="Collection(sistemaModel.reporte_Result)">
           <Parameter Name="cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="VENTAS" EntityType="sistemaModel.VENTAS" />
-          <EntitySet Name="DETALLEVENTAS" EntityType="sistemaModel.DETALLEVENTAS" />
+          <EntitySet Name="VENTAS" EntityType="sistemaModel.VENTA" />
+          <AssociationSet Name="FK_VENTAS_CLIENTES" Association="sistemaModel.FK_VENTAS_CLIENTES">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTA" EntitySet="VENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTAS_Usuarios" Association="sistemaModel.FK_VENTAS_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="VENTA" EntitySet="VENTAS" />
+          </AssociationSet>
+          <EntitySet Name="DETALLEVENTAS" EntityType="sistemaModel.DETALLEVENTA" />
+          <AssociationSet Name="FK_DETALLEVENTAS_DESCUENTOS" Association="sistemaModel.FK_DETALLEVENTAS_DESCUENTOS">
+            <End Role="DESCUENTOS" EntitySet="DESCUENTOS" />
+            <End Role="DETALLEVENTA" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLEVENTAS_PRODUCTOS" Association="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLEVENTA" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLEVENTAS_VENTAS" Association="sistemaModel.FK_DETALLEVENTAS_VENTAS">
+            <End Role="VENTA" EntitySet="VENTAS" />
+            <End Role="DETALLEVENTA" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CLIENTES">
           <Key>
@@ -365,6 +480,7 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Name="dui" Type="Int32" />
           <Property Name="nit" Type="Int64" />
           <Property Name="tipoCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VENTAS" Relationship="sistemaModel.FK_VENTAS_CLIENTES" FromRole="CLIENTES" ToRole="VENTA" />
         </EntityType>
         <EntityType Name="CATEGORIA">
           <Key>
@@ -399,6 +515,7 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Name="activo" Type="Boolean" />
           <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_PRODUCTOS_DESCUENTOS" FromRole="DESCUENTOS" ToRole="PRODUCTOS" />
+          <NavigationProperty Name="DETALLEVENTAS" Relationship="sistemaModel.FK_DETALLEVENTAS_DESCUENTOS" FromRole="DESCUENTOS" ToRole="DETALLEVENTA" />
         </EntityType>
         <EntityType Name="DETALLE_COMPRA">
           <Key>
@@ -431,6 +548,7 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <NavigationProperty Name="DESCUENTOS" Relationship="sistemaModel.FK_PRODUCTOS_DESCUENTOS" FromRole="PRODUCTOS" ToRole="DESCUENTOS" />
           <NavigationProperty Name="DETALLE_COMPRA" Relationship="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" FromRole="PRODUCTOS" ToRole="DETALLE_COMPRA" />
           <NavigationProperty Name="VENCIMIENTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="VENCIMIENTOS" />
+          <NavigationProperty Name="DETALLEVENTAS" Relationship="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="DETALLEVENTA" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -540,31 +658,95 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
           <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="CANTIDAD" Nullable="true" />
         </ComplexType>
-        <EntityType Name="VENTAS">
+        <EntityType Name="VENTA">
           <Key>
             <PropertyRef Name="IdVenta" />
           </Key>
-          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="String" Nullable="false" />
-          <Property Name="hora" Type="String" Nullable="false" />
-          <Property Name="idUsuario" Type="String" Nullable="false" />
+          <Property Name="IdVenta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hora" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="anulado" Type="Boolean" />
-          <Property Name="motivo" Type="String" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" />
-          <Property Name="idCliente" Type="String" Nullable="false" />
+          <Property Name="motivo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idCliente" Type="Int32" />
+          <NavigationProperty Name="CLIENTE" Relationship="sistemaModel.FK_VENTAS_CLIENTES" FromRole="VENTA" ToRole="CLIENTES" />
+          <NavigationProperty Name="Usuario" Relationship="sistemaModel.FK_VENTAS_Usuarios" FromRole="VENTA" ToRole="Usuarios" />
+          <NavigationProperty Name="DETALLEVENTAS" Relationship="sistemaModel.FK_DETALLEVENTAS_VENTAS" FromRole="VENTA" ToRole="DETALLEVENTA" />
         </EntityType>
-        <EntityType Name="DETALLEVENTAS">
+        <Association Name="FK_VENTAS_CLIENTES">
+          <End Type="sistemaModel.CLIENTES" Role="CLIENTES" Multiplicity="0..1" />
+          <End Type="sistemaModel.VENTA" Role="VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENTAS_Usuarios">
+          <End Type="sistemaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="sistemaModel.VENTA" Role="VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Us_Usuario" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DETALLEVENTA">
           <Key>
             <PropertyRef Name="idDetalle" />
           </Key>
-          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
-          <Property Name="precio" Type="String" Nullable="false" />
-          <Property Name="codproducto" Type="String" Nullable="false" />
-          <Property Name="descuento" Type="String" Nullable="false" />
-          <Property Name="idProducto" Type="String" Nullable="false" />
-          <Property Name="idVenta" Type="String" Nullable="false" />
+          <Property Name="idDetalle" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Single" Nullable="false" />
+          <Property Name="precio" Type="Single" Nullable="false" />
+          <Property Name="IdDescuento" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idVenta" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="DESCUENTO" Relationship="sistemaModel.FK_DETALLEVENTAS_DESCUENTOS" FromRole="DETALLEVENTA" ToRole="DESCUENTOS" />
+          <NavigationProperty Name="PRODUCTO" Relationship="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS" FromRole="DETALLEVENTA" ToRole="PRODUCTOS" />
+          <NavigationProperty Name="VENTA" Relationship="sistemaModel.FK_DETALLEVENTAS_VENTAS" FromRole="DETALLEVENTA" ToRole="VENTA" />
         </EntityType>
+        <Association Name="FK_DETALLEVENTAS_DESCUENTOS">
+          <End Type="sistemaModel.DESCUENTOS" Role="DESCUENTOS" Multiplicity="1" />
+          <End Type="sistemaModel.DETALLEVENTA" Role="DETALLEVENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESCUENTOS">
+              <PropertyRef Name="idDescuento" />
+            </Principal>
+            <Dependent Role="DETALLEVENTA">
+              <PropertyRef Name="IdDescuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLEVENTAS_PRODUCTOS">
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="1" />
+          <End Type="sistemaModel.DETALLEVENTA" Role="DETALLEVENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="DETALLEVENTA">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLEVENTAS_VENTAS">
+          <End Type="sistemaModel.VENTA" Role="VENTA" Multiplicity="1" />
+          <End Type="sistemaModel.DETALLEVENTA" Role="DETALLEVENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DETALLEVENTA">
+              <PropertyRef Name="idVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -709,6 +891,31 @@ warning 6013: The table/view 'sistema.dbo.VistaProductos' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="VENTAS">
+            <EntityTypeMapping TypeName="sistemaModel.VENTA">
+              <MappingFragment StoreEntitySet="VENTAS">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="anulado" ColumnName="anulado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLEVENTAS">
+            <EntityTypeMapping TypeName="sistemaModel.DETALLEVENTA">
+              <MappingFragment StoreEntitySet="DETALLEVENTAS">
+                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="IdDescuento" ColumnName="IdDescuento" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
