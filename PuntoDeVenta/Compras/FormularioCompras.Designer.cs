@@ -142,7 +142,7 @@
             // button2
             // 
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Location = new System.Drawing.Point(530, 19);
+            this.button2.Location = new System.Drawing.Point(530, 38);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(207, 84);
             this.button2.TabIndex = 14;
@@ -152,7 +152,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(307, 19);
+            this.btnGuardar.Location = new System.Drawing.Point(307, 38);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(207, 84);
             this.btnGuardar.TabIndex = 13;
