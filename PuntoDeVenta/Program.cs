@@ -31,7 +31,7 @@ namespace PuntoDeVenta
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Productos.Productos_Ver());
+            Application.Run(new Ventas.Agregar_venta());
         }
     }
 }

@@ -131,6 +131,11 @@ namespace PuntoDeVenta.Clientes
                 MessageBox.Show(msj, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void textNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
         

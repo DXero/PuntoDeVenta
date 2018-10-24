@@ -145,6 +145,7 @@
             this.txt_Precio.Name = "txt_Precio";
             this.txt_Precio.Size = new System.Drawing.Size(77, 20);
             this.txt_Precio.TabIndex = 20;
+            this.txt_Precio.TextChanged += new System.EventHandler(this.txt_Precio_TextChanged);
             this.txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Precio_KeyPress);
             // 
             // txt_Costo
