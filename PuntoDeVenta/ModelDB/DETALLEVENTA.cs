@@ -12,9 +12,17 @@ namespace PuntoDeVenta.ModelDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Configuracion
+    public partial class DETALLEVENTA
     {
-        public string NombreEmpresa { get; set; }
-        public Nullable<int> campo { get; set; }
+        public long idDetalle { get; set; }
+        public float Cantidad { get; set; }
+        public float precio { get; set; }
+        public int IdDescuento { get; set; }
+        public int idProducto { get; set; }
+        public long idVenta { get; set; }
+    
+        public virtual DESCUENTOS DESCUENTO { get; set; }
+        public virtual PRODUCTOS PRODUCTO { get; set; }
+        public virtual VENTA VENTA { get; set; }
     }
 }

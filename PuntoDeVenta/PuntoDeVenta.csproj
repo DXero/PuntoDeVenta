@@ -100,10 +100,10 @@
     <Compile Include="ModelDB\DESCUENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDB\DETALLE_COMPRA.cs">
+    <Compile Include="ModelDB\DETALLEVENTA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDB\DETTALEVENTAS.cs">
+    <Compile Include="ModelDB\DETALLE_COMPRA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\ModeloDB.Context.cs">
@@ -139,7 +139,7 @@
     <Compile Include="ModelDB\VENCIMIENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDB\VENTAS.cs">
+    <Compile Include="ModelDB\VENTA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\VistaProductos.cs">
