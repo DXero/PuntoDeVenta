@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.no = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Si = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,12 +48,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.no);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.Si);
+            this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -65,43 +59,19 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 171);
+            this.groupBox1.Size = new System.Drawing.Size(528, 171);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva venta";
             // 
-            // no
-            // 
-            this.no.AutoSize = true;
-            this.no.Checked = true;
-            this.no.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.no.Location = new System.Drawing.Point(372, 32);
-            this.no.Name = "no";
-            this.no.Size = new System.Drawing.Size(40, 17);
-            this.no.TabIndex = 13;
-            this.no.Text = "No";
-            this.no.UseVisualStyleBackColor = true;
-            this.no.CheckedChanged += new System.EventHandler(this.no_CheckedChanged);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(331, 92);
+            this.button1.Location = new System.Drawing.Point(325, 73);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 40);
+            this.button1.Size = new System.Drawing.Size(168, 59);
             this.button1.TabIndex = 6;
             this.button1.Text = "Agregar al detalle";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Si
-            // 
-            this.Si.AutoSize = true;
-            this.Si.Location = new System.Drawing.Point(331, 32);
-            this.Si.Name = "Si";
-            this.Si.Size = new System.Drawing.Size(35, 17);
-            this.Si.TabIndex = 12;
-            this.Si.Text = "Si";
-            this.Si.UseVisualStyleBackColor = true;
-            this.Si.CheckedChanged += new System.EventHandler(this.Si_CheckedChanged);
             // 
             // numericUpDown1
             // 
@@ -110,30 +80,12 @@
             this.numericUpDown1.Size = new System.Drawing.Size(153, 20);
             this.numericUpDown1.TabIndex = 11;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(427, 30);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 10;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Descuento: ";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(83, 112);
             this.textBox2.MaxLength = 7;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(152, 20);
             this.textBox2.TabIndex = 5;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -185,9 +137,9 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(600, 85);
+            this.button2.Location = new System.Drawing.Point(600, 31);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 39);
+            this.button2.Size = new System.Drawing.Size(254, 56);
             this.button2.TabIndex = 2;
             this.button2.Text = "Registar venta";
             this.button2.UseVisualStyleBackColor = true;
@@ -195,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(597, 44);
+            this.label5.Location = new System.Drawing.Point(281, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 3;
@@ -204,17 +156,17 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(651, 41);
+            this.comboBox3.Location = new System.Drawing.Point(325, 29);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(203, 21);
+            this.comboBox3.Size = new System.Drawing.Size(168, 21);
             this.comboBox3.TabIndex = 4;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(600, 132);
+            this.button3.Location = new System.Drawing.Point(600, 104);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(254, 41);
+            this.button3.Size = new System.Drawing.Size(254, 59);
             this.button3.TabIndex = 5;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
@@ -225,8 +177,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 467);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -237,7 +187,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -250,11 +199,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox no;
-        private System.Windows.Forms.CheckBox Si;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
