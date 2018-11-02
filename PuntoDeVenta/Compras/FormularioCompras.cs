@@ -37,14 +37,14 @@ namespace PuntoDeVenta.Compras
             using (var db = new ModelDB.Contexto())
             {
                 cbdescuento.DataSource = db.DESCUENTOS.Select(x => new { x.idDescuento, x.descuento }).ToList();
-                cbcodigoProducto.DataSource = db.PRODUCTOS.Select(x => new { x.idProductos, x.codigoBarra }).ToList();
+                cbcodigoProducto.DataSource = db.PRODUCTOS.Select(x => new { x.idProductos, x.descripcion }).ToList();
 
             }
             cbdescuento.DisplayMember = "descuento";
             cbdescuento.ValueMember = "idDescuento";
 
-            cbcodigoProducto.DisplayMember = "idProductos";
-            cbcodigoProducto.ValueMember = "codigoBarra";
+            cbcodigoProducto.DisplayMember = "descripcion";
+            cbcodigoProducto.ValueMember = "idProductos";
         }
 
         bool validacion = true;

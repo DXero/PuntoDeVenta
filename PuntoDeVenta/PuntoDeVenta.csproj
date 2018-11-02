@@ -212,11 +212,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
     </Compile>
-    <Compile Include="sistemaDataSet4.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
-    </Compile>
     <Compile Include="sistemaDataSet41.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -381,17 +376,6 @@
     </None>
     <None Include="sistemaDataSet3.xss">
       <DependentUpon>sistemaDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="sistemaDataSet4.xsc">
-      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
-    </None>
-    <None Include="sistemaDataSet4.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sistemaDataSet4.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sistemaDataSet4.xss">
-      <DependentUpon>sistemaDataSet4.xsd</DependentUpon>
     </None>
     <None Include="sistemaDataSet41.xsc">
       <DependentUpon>sistemaDataSet41.xsd</DependentUpon>
