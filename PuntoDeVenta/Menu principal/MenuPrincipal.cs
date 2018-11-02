@@ -71,5 +71,11 @@ namespace PuntoDeVenta.Menu_principal
             agregarVent.Show();
             
         }
+
+        private void anularVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ventas.Anular_venta agregarVent = new Ventas.Anular_venta();
+            agregarVent.Show();
+        }
     }
 }
