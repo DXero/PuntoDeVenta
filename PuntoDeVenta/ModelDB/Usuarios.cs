@@ -18,6 +18,7 @@ namespace PuntoDeVenta.ModelDB
         public Usuarios()
         {
             this.COMPRAS = new HashSet<COMPRAS>();
+            this.VENTAS = new HashSet<VENTA>();
         }
     
         public string Us_Usuario { get; set; }
@@ -31,5 +32,7 @@ namespace PuntoDeVenta.ModelDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRAS> COMPRAS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VENTA> VENTAS { get; set; }
     }
 }

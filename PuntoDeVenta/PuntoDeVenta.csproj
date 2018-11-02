@@ -100,6 +100,9 @@
     <Compile Include="ModelDB\DESCUENTOS.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\DETALLEVENTA.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\DETALLE_COMPRA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
@@ -134,6 +137,9 @@
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\VENCIMIENTOS.cs">
+      <DependentUpon>ModeloDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\VENTA.cs">
       <DependentUpon>ModeloDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\VistaProductos.cs">
@@ -253,6 +259,12 @@
     <Compile Include="Usuarios\Usuario.Designer.cs">
       <DependentUpon>Usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\Nueva venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Nueva venta.Designer.cs">
+      <DependentUpon>Nueva venta.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clientes\cliente form.resx">
       <DependentUpon>cliente form.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Usuario.resx">
       <DependentUpon>Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Nueva venta.resx">
+      <DependentUpon>Nueva venta.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ModelDB\ModeloDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -405,6 +420,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Compras\Lógica para eliminar compra.txt" />
     <Content Include="ModelDB\ModeloDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloDB.edmx</DependentUpon>

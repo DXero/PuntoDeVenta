@@ -18,6 +18,7 @@ namespace PuntoDeVenta.ModelDB
         public DESCUENTOS()
         {
             this.PRODUCTOS = new HashSet<PRODUCTOS>();
+            this.DETALLEVENTAS = new HashSet<DETALLEVENTA>();
         }
     
         public int idDescuento { get; set; }
@@ -27,5 +28,7 @@ namespace PuntoDeVenta.ModelDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTOS> PRODUCTOS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLEVENTA> DETALLEVENTAS { get; set; }
     }
 }

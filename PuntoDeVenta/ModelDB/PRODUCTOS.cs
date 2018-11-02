@@ -19,6 +19,7 @@ namespace PuntoDeVenta.ModelDB
         {
             this.DETALLE_COMPRA = new HashSet<DETALLE_COMPRA>();
             this.VENCIMIENTOS = new HashSet<VENCIMIENTOS>();
+            this.DETALLEVENTAS = new HashSet<DETALLEVENTA>();
         }
     
         public int idProductos { get; set; }
@@ -37,5 +38,7 @@ namespace PuntoDeVenta.ModelDB
         public virtual ICollection<DETALLE_COMPRA> DETALLE_COMPRA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VENCIMIENTOS> VENCIMIENTOS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLEVENTA> DETALLEVENTAS { get; set; }
     }
 }

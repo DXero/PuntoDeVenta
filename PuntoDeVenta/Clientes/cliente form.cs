@@ -92,12 +92,16 @@ namespace PuntoDeVenta.Clientes
         {
 
             validacion = true;
+            String msj = "";
             //***********
-            if (textNombre.Text == "" || textApellidos.Text == "") { MessageBox.Show("Los campos 'Nombres' y 'Apellidos' son obligatorios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-            if (textTelefono.Text != "" && textTelefono.Text.Length != 8) { MessageBox.Show("el campo 'Telefono' debe contener 8 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-            if (textNit.Text != "" && textNit.Text.Length != 14) { MessageBox.Show("el campo 'NIT' debe contener 14 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
-            if (textDui.Text != "" && textDui.Text.Length != 9) { MessageBox.Show("el campo 'DUI' debe contener 9 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); validacion = false; }
+            if (textNombre.Text == "" || textApellidos.Text == "") { msj += "Los campos 'Nombres' y 'Apellidos' son obligatorios\n"; validacion = false; }
+            if (textTelefono.Text == "" || textTelefono.Text.Length != 8) { msj += "el campo 'Telefono' esta vacio o no contiene 8 digitos\n"; validacion = false; }
+            if (textNit.Text == "" || textNit.Text.Length != 14) { msj += "el campo 'NIT' debe contener 14 digitos\n"; validacion = false; }
+            if (textDui.Text == "" || textDui.Text.Length != 9) { msj += "el campo 'DUI' debe contener 9 digitos\n"; validacion = false; }
             
+            
+
+
             //***********
             if (validacion != false)
             {
@@ -112,8 +116,25 @@ namespace PuntoDeVenta.Clientes
                 cli.correo = textCorreo.Text;
                 cli.tipoCliente = comboTipoUsuario.Text;
                 db.CLIENTES.Add(cli);
-                db.SaveChanges();
+
+                if (db.SaveChanges() > 0 )
+                {
+                    MessageBox.Show("Cliente agregado exitosamente");
+                }
+                else
+                {
+                    MessageBox.Show("Fallo conexión");
+                }
             }
+            else
+            {
+                MessageBox.Show(msj, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void textNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

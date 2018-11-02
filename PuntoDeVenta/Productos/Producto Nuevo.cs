@@ -136,5 +136,10 @@ namespace PuntoDeVenta.Productos
                
         }
         }
+
+        private void txt_Precio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

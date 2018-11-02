@@ -12,25 +12,25 @@ namespace PuntoDeVenta.ModelDB
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENTES
+    public partial class VENTA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CLIENTES()
+        public VENTA()
         {
-            this.VENTAS = new HashSet<VENTA>();
+            this.DETALLEVENTAS = new HashSet<DETALLEVENTA>();
         }
     
-        public int id { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public Nullable<System.DateTime> fechaNacimiento { get; set; }
-        public Nullable<int> telefono { get; set; }
-        public string correo { get; set; }
-        public Nullable<int> dui { get; set; }
-        public Nullable<long> nit { get; set; }
-        public string tipoCliente { get; set; }
+        public long IdVenta { get; set; }
+        public string fecha { get; set; }
+        public string hora { get; set; }
+        public string idUsuario { get; set; }
+        public Nullable<bool> anulado { get; set; }
+        public string motivo { get; set; }
+        public Nullable<int> idCliente { get; set; }
     
+        public virtual CLIENTES CLIENTE { get; set; }
+        public virtual Usuarios Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENTA> VENTAS { get; set; }
+        public virtual ICollection<DETALLEVENTA> DETALLEVENTAS { get; set; }
     }
 }

@@ -1,0 +1,12 @@
+- Solo se podrá anular una compra cuando se le haya
+notificado al administrador del negocio, por lo cual
+solo él podra realizar dicha operación.
+
+- Para anular una compra se deberá especificar un motivo.
+
+- Una compra solo se podrá anular dentro de los primeros
+5 días que esta se haya hecho. 
+
+- El producto adquirido en la compra deberá ser devuelto
+a la empresa proveedora al igual que el dinero al negocio.
+

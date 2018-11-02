@@ -38,6 +38,8 @@ namespace PuntoDeVenta.ModelDB
         public virtual DbSet<PRODUCTOS> PRODUCTOS { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<VENCIMIENTOS> VENCIMIENTOS { get; set; }
+        public virtual DbSet<VENTA> VENTAS { get; set; }
+        public virtual DbSet<DETALLEVENTA> DETALLEVENTAS { get; set; }
     
         public virtual ObjectResult<reporte_Result> reporte(Nullable<int> cantidad)
         {
