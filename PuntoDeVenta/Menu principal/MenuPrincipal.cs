@@ -77,5 +77,16 @@ namespace PuntoDeVenta.Menu_principal
             Ventas.Anular_venta agregarVent = new Ventas.Anular_venta();
             agregarVent.Show();
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void generarCodigoDeBarraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Codig_de_barra.Codigo_de_Barra CodigoBarra = new  Codig_de_barra.Codigo_de_Barra();
+            CodigoBarra.Show();
+        }
     }
 }
