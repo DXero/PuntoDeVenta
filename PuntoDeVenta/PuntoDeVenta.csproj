@@ -225,6 +225,12 @@
     <Compile Include="Reportes\ingreso y egresos.Designer.cs">
       <DependentUpon>ingreso y egresos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Reporte de ventas semanal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte de ventas semanal.Designer.cs">
+      <DependentUpon>Reporte de ventas semanal.cs</DependentUpon>
+    </Compile>
     <Compile Include="sistemaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ingreso y egresos.resx">
       <DependentUpon>ingreso y egresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte de ventas semanal.resx">
+      <DependentUpon>Reporte de ventas semanal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabla.resx">
       <DependentUpon>Tabla.cs</DependentUpon>
