@@ -181,7 +181,7 @@ namespace PuntoDeVenta.Ventas
                     var prod = row.Cells[1].Value.ToString();
                     Registrar.DETALLEVENTAS.Add(new DETALLEVENTA()
                     {
-                        idVenta = new Contexto().VENTAS.Attach(aux).IdVenta,
+                        VENTA = aux,// Cambio
                         Cantidad = int.Parse(row.Cells[2].Value.ToString()),
                         idProducto = Convert.ToInt32(new Contexto().PRODUCTOS.Where(st => st.descripcion == prod).First().idProductos.ToString()),
                         precio = float.Parse(row.Cells[3].Value.ToString()),
@@ -189,10 +189,13 @@ namespace PuntoDeVenta.Ventas
                     });
                     var RestarExistencia = Registrar.PRODUCTOS.Where(st => st.descripcion == prod).First();
                     RestarExistencia.existencia -= int.Parse(row.Cells[2].Value.ToString());
-                    Registrar.SaveChanges();
+                    // Cambio
                     ProductoDetalle();
                 }
-                MessageBox.Show("Las ventas fueron registradas");
+                if(Registrar.SaveChanges() > 0)// Cambio
+                    MessageBox.Show("Las ventas fueron registradas");// Cambio
+                else// Cambio
+                    MessageBox.Show("Hubo un problema");// Cambio
             }
             else MessageBox.Show("No hay ventas por registrar");
         }

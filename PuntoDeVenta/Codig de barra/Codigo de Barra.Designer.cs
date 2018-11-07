@@ -37,9 +37,9 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(25, 270);
+            this.btnGenerar.Location = new System.Drawing.Point(25, 269);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(403, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(258, 35);
             this.btnGenerar.TabIndex = 0;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -48,9 +48,9 @@
             // btnGuardar
             // 
             this.btnGuardar.Enabled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(25, 319);
+            this.btnGuardar.Location = new System.Drawing.Point(372, 269);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(403, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(258, 35);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -58,32 +58,33 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(25, 227);
+            this.txtCodigo.Location = new System.Drawing.Point(25, 209);
+            this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(403, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(605, 40);
             this.txtCodigo.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 189);
+            this.label1.Location = new System.Drawing.Point(22, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 17);
+            this.label1.Size = new System.Drawing.Size(206, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Texto para el codigo de barras";
+            this.label1.Text = "Texto para el codigo de barras:";
             // 
             // panelResultado
             // 
-            this.panelResultado.Location = new System.Drawing.Point(28, 62);
+            this.panelResultado.Location = new System.Drawing.Point(25, 24);
             this.panelResultado.Name = "panelResultado";
-            this.panelResultado.Size = new System.Drawing.Size(400, 100);
+            this.panelResultado.Size = new System.Drawing.Size(605, 131);
             this.panelResultado.TabIndex = 4;
             // 
             // Codigo_de_Barra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 381);
+            this.ClientSize = new System.Drawing.Size(642, 356);
             this.Controls.Add(this.panelResultado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigo);
