@@ -81,7 +81,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(31, 174);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(862, 431);
+            this.panel1.Size = new System.Drawing.Size(868, 431);
             this.panel1.TabIndex = 5;
             // 
             // Reporte_de_ventas_semanal
