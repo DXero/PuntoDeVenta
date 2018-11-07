@@ -8,8 +8,8 @@ namespace PuntoDeVenta.Usuarios
 {
     class StaticValue
     {
-
-        public static string us;
+        public static int idus = 1;
+        public static string us = "oneuser";
 
     }
 }
