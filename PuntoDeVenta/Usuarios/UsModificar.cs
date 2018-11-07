@@ -61,6 +61,9 @@ namespace PuntoDeVenta.Usuarios
 
         }
 
-      
+        private void TextUs_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
