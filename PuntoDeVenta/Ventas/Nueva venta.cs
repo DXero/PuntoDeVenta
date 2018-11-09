@@ -190,9 +190,9 @@ namespace PuntoDeVenta.Ventas
                     {
                         VENTA = aux,// Cambio
                         Cantidad = int.Parse(row.Cells[2].Value.ToString()),
-                        idProducto = Convert.ToInt32(new Contexto().PRODUCTOS.Where(st => st.descripcion == prod).First().idProductos.ToString()),
+                        PRODUCTO = Registrar.PRODUCTOS.Where(st => st.descripcion == prod).ToList().First(),
                         precio = float.Parse(row.Cells[3].Value.ToString()),
-                        IdDescuento = Convert.ToInt32(new Contexto().PRODUCTOS.Where(st => st.descripcion == prod).First().idDescuentos.ToString())
+                        DESCUENTO = Registrar.PRODUCTOS.Where(st => st.descripcion == prod).ToList().First().DESCUENTOS
                     });
                     var RestarExistencia = Registrar.PRODUCTOS.Where(st => st.descripcion == prod).First();
                     RestarExistencia.existencia -= int.Parse(row.Cells[2].Value.ToString());

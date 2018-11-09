@@ -50,9 +50,9 @@ namespace PuntoDeVenta.ModelDB
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<reporte_Result>("reporte", cantidadParameter);
         }
 
-        internal int SaveChanges()
+        /*internal int SaveChanges()
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
