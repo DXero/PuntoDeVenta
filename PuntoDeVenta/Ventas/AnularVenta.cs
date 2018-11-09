@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PuntoDeVenta.Ventas
 {
-    public partial class Anular_venta : Form
+    public partial class AnularVenta : Form
     {
-        public Anular_venta()
+        public AnularVenta()
         {
             InitializeComponent();
         }

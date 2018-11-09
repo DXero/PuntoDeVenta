@@ -140,12 +140,19 @@ namespace PuntoDeVenta.Ventas
                     {
                         if (ListaExistencias[CmbProducto.SelectedIndex] > 0 && SpCantidad.Value > 0 && SpCantidad.Value <= ListaExistencias[CmbProducto.SelectedIndex])
                         {
+                        bool Existe = false;
                         TablaDetallle.Rows.Clear();
                         string[] Venta = { CmbCliente.SelectedItem.ToString(), CmbProducto.SelectedItem.ToString(), SpCantidad.Value.ToString(), TxtPrecioProd.Text, (Convert.ToDouble(SpCantidad.Value) * double.Parse(TxtPrecioProd.Text)).ToString() };
-                        ListaVentas.Add(Venta);
+                            foreach (var detalle in ListaVentas)
+                            if (Venta[0] == detalle[0] && Venta[1] == detalle[1])
+                                {
+                                   detalle[2] = (int.Parse(detalle[2]) + int.Parse(Venta[2])).ToString();
+                                   detalle[4]  = (double.Parse(detalle[2])  * double.Parse(TxtPrecioProd.Text)).ToString(); Existe = true;
+                                }
+                            if(Existe == false) ListaVentas.Add(Venta);
                         foreach (var item in ListaVentas)
                          TablaDetallle.Rows.Add(item);
-                            ListaExistencias[CmbProducto.SelectedIndex] = ListaExistencias[CmbProducto.SelectedIndex] - SPvalue;
+                        ListaExistencias[CmbProducto.SelectedIndex] = ListaExistencias[CmbProducto.SelectedIndex] - SPvalue;
                         TxtExistencias.Text = ListaExistencias[CmbProducto.SelectedIndex].ToString();
                          SpCantidad.Value = 1; SPvalue = 1;
                         SpCantidad.Maximum = Convert.ToDecimal(ListaExistencias[CmbProducto.SelectedIndex]);
