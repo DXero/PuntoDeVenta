@@ -15,14 +15,12 @@
         <EntityTypeShape EntityType="sistemaModel.DETALLE_COMPRA" Width="1.5" PointX="10.25" PointY="6.375" />
         <EntityTypeShape EntityType="sistemaModel.PRODUCTOS" Width="1.5" PointX="8" PointY="6" />
         <EntityTypeShape EntityType="sistemaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="sistemaModel.VENCIMIENTOS" Width="1.5" PointX="10.25" PointY="10.375" />
         <AssociationConnector Association="sistemaModel.FK_PRODUCTOS_CATEGORIA" />
         <AssociationConnector Association="sistemaModel.FK_COMPRAS_COMPRAS" />
         <AssociationConnector Association="sistemaModel.FK_COMPRAS_Usuarios1" />
         <AssociationConnector Association="sistemaModel.FK_DETALLE_COMPRA_COMPRAS" />
         <AssociationConnector Association="sistemaModel.FK_PRODUCTOS_DESCUENTOS" />
         <AssociationConnector Association="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" />
-        <AssociationConnector Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" />
         <EntityTypeShape EntityType="sistemaModel.VENTA" Width="1.5" PointX="8.75" PointY="1.5" />
         <AssociationConnector Association="sistemaModel.FK_VENTAS_CLIENTES" />
         <AssociationConnector Association="sistemaModel.FK_VENTAS_Usuarios" />
@@ -30,6 +28,8 @@
         <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_DESCUENTOS" />
         <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS" />
         <AssociationConnector Association="sistemaModel.FK_DETALLEVENTAS_VENTAS" />
+        <EntityTypeShape EntityType="sistemaModel.VENCIMIENTOS" Width="1.5" PointX="10.25" PointY="10" />
+        <AssociationConnector Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

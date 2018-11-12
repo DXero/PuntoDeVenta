@@ -132,7 +132,7 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Key>
             <PropertyRef Name="idVencimiento" />
           </Key>
-          <Property Name="idVencimiento" Type="int" Nullable="false" />
+          <Property Name="idVencimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idProductos" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
@@ -412,7 +412,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <EntitySet Name="DETALLE_COMPRA" EntityType="sistemaModel.DETALLE_COMPRA" />
           <EntitySet Name="PRODUCTOS" EntityType="sistemaModel.PRODUCTOS" />
           <EntitySet Name="sysdiagrams" EntityType="sistemaModel.sysdiagrams" />
-          <EntitySet Name="VENCIMIENTOS" EntityType="sistemaModel.VENCIMIENTOS" />
           <AssociationSet Name="FK_PRODUCTOS_CATEGORIA" Association="sistemaModel.FK_PRODUCTOS_CATEGORIA">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
@@ -436,10 +435,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <AssociationSet Name="FK_DETALLE_COMPRA_PRODUCTOS" Association="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS">
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
             <End Role="DETALLE_COMPRA" EntitySet="DETALLE_COMPRA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VENCIMIENTOS_PRODUCTOS" Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS">
-            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
-            <End Role="VENCIMIENTOS" EntitySet="VENCIMIENTOS" />
           </AssociationSet>
           <FunctionImport Name="reporte" ReturnType="Collection(sistemaModel.reporte_Result)">
           <Parameter Name="cantidad" Mode="In" Type="Int32" />
@@ -465,6 +460,11 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <AssociationSet Name="FK_DETALLEVENTAS_VENTAS" Association="sistemaModel.FK_DETALLEVENTAS_VENTAS">
             <End Role="VENTA" EntitySet="VENTAS" />
             <End Role="DETALLEVENTA" EntitySet="DETALLEVENTAS" />
+          </AssociationSet>
+          <EntitySet Name="VENCIMIENTOS" EntityType="sistemaModel.VENCIMIENTOS" />
+          <AssociationSet Name="FK_VENCIMIENTOS_PRODUCTOS" Association="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="VENCIMIENTO" EntitySet="VENCIMIENTOS" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CLIENTES">
@@ -547,8 +547,8 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <NavigationProperty Name="CATEGORIA" Relationship="sistemaModel.FK_PRODUCTOS_CATEGORIA" FromRole="PRODUCTOS" ToRole="CATEGORIA" />
           <NavigationProperty Name="DESCUENTOS" Relationship="sistemaModel.FK_PRODUCTOS_DESCUENTOS" FromRole="PRODUCTOS" ToRole="DESCUENTOS" />
           <NavigationProperty Name="DETALLE_COMPRA" Relationship="sistemaModel.FK_DETALLE_COMPRA_PRODUCTOS" FromRole="PRODUCTOS" ToRole="DETALLE_COMPRA" />
-          <NavigationProperty Name="VENCIMIENTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="VENCIMIENTOS" />
           <NavigationProperty Name="DETALLEVENTAS" Relationship="sistemaModel.FK_DETALLEVENTAS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="DETALLEVENTA" />
+          <NavigationProperty Name="VENCIMIENTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="PRODUCTOS" ToRole="VENCIMIENTO" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -559,15 +559,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="VENCIMIENTOS">
-          <Key>
-            <PropertyRef Name="idVencimiento" />
-          </Key>
-          <Property Name="idVencimiento" Type="Int32" Nullable="false" />
-          <Property Name="idProductos" Type="Int32" />
-          <Property Name="fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PRODUCTOS" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="VENCIMIENTOS" ToRole="PRODUCTOS" />
         </EntityType>
         <Association Name="FK_PRODUCTOS_CATEGORIA">
           <End Type="sistemaModel.CATEGORIA" Role="CATEGORIA" Multiplicity="0..1" />
@@ -638,18 +629,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             </Principal>
             <Dependent Role="DETALLE_COMPRA">
               <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VENCIMIENTOS_PRODUCTOS">
-          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="0..1" />
-          <End Type="sistemaModel.VENCIMIENTOS" Role="VENCIMIENTOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTOS">
-              <PropertyRef Name="idProductos" />
-            </Principal>
-            <Dependent Role="VENCIMIENTOS">
-              <PropertyRef Name="idProductos" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -744,6 +723,27 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
             </Principal>
             <Dependent Role="DETALLEVENTA">
               <PropertyRef Name="idVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VENCIMIENTOS">
+          <Key>
+            <PropertyRef Name="idVencimiento" />
+          </Key>
+          <Property Name="idVencimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProductos" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PRODUCTO" Relationship="sistemaModel.FK_VENCIMIENTOS_PRODUCTOS" FromRole="VENCIMIENTO" ToRole="PRODUCTOS" />
+        </EntityType>
+        <Association Name="FK_VENCIMIENTOS_PRODUCTOS">
+          <End Type="sistemaModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="0..1" />
+          <End Type="sistemaModel.VENCIMIENTOS" Role="VENCIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="VENCIMIENTO">
+              <PropertyRef Name="idProductos" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -873,15 +873,6 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VENCIMIENTOS">
-            <EntityTypeMapping TypeName="sistemaModel.VENCIMIENTOS">
-              <MappingFragment StoreEntitySet="VENCIMIENTOS">
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
-                <ScalarProperty Name="idVencimiento" ColumnName="idVencimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="reporte" FunctionName="sistemaModel.Store.reporte">
             <ResultMapping>
               <ComplexTypeMapping TypeName="sistemaModel.reporte_Result">
@@ -913,6 +904,15 @@ warning 6002: The table/view 'sistema.dbo.Configuracion' does not have a primary
                 <ScalarProperty Name="precio" ColumnName="precio" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENCIMIENTOS">
+            <EntityTypeMapping TypeName="sistemaModel.VENCIMIENTOS">
+              <MappingFragment StoreEntitySet="VENCIMIENTOS">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
+                <ScalarProperty Name="idVencimiento" ColumnName="idVencimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

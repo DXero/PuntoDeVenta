@@ -18,6 +18,6 @@ namespace PuntoDeVenta.ModelDB
         public Nullable<int> idProductos { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
     
-        public virtual PRODUCTOS PRODUCTOS { get; set; }
+        public virtual PRODUCTOS PRODUCTO { get; set; }
     }
 }

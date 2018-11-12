@@ -178,9 +178,9 @@ namespace PuntoDeVenta.Compras
                         tr.Complete();
                         MessageBox.Show("Transación exitosa");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Error en la transación");
+                        MessageBox.Show("Error en la transación" + ex.Message);
                        
                     }
 
