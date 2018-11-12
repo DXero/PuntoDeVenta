@@ -25,25 +25,29 @@ namespace PuntoDeVenta.Compras
             objeto.Columns.Add("fechaVencimiento");
             // aqui se llenan los combobox  y se detalla que es lo que vera el usuario y lo que 
             //  se evaluara al seleccionar en el combobox
-            using (var datos = new sistemaDataSet3())
-            {
+            //using (var datos = new sistemaDataSet3())
+            //{
 
-                cbxProveedor.DataSource = datos.PROVEEDORES.Select(c => new { c.id, c.nombreEmpresa }).ToList();
+            //    cbxProveedor.DataSource = datos.PROVEEDORES.Select(c => new { c.id, c.nombreEmpresa }).ToList();
                 
-            }
-            cbxProveedor.DisplayMember= "nombreEmpresa";
-            cbxProveedor.ValueMember = "id";
+            //}
+            //cbxProveedor.DisplayMember= "nombreEmpresa";
+            //cbxProveedor.ValueMember = "id";
 
             using (var db = new ModelDB.Contexto())
             {
+                cbxProveedor.DataSource = db.PROVEEDORES.Select(x => new { x.id, x.nombreEmpresa }).ToList();
                 cbdescuento.DataSource = db.DESCUENTOS.Select(x => new { x.idDescuento, x.descuento }).ToList();
-                cbcodigoProducto.DataSource = db.PRODUCTOS.Select(x => new { x.idProductos, x.descripcion }).ToList();
+                cbcodigoProducto.DataSource = db.PRODUCTOS.Select(x => new { x.idProductos, x.codigoBarra }).ToList();
 
             }
+            cbxProveedor.DisplayMember = "nombreEmpresa";
+            cbxProveedor.ValueMember = "id";
+
             cbdescuento.DisplayMember = "descuento";
             cbdescuento.ValueMember = "idDescuento";
 
-            cbcodigoProducto.DisplayMember = "descripcion";
+            cbcodigoProducto.DisplayMember = "codigoBarra";
             cbcodigoProducto.ValueMember = "idProductos";
         }
 
@@ -133,10 +137,13 @@ namespace PuntoDeVenta.Compras
                             compra.IdProveedor = int.Parse(cbxProveedor.SelectedValue.ToString());
                             compra.Fecha = Fecha.Value;
                             compra.Comentario = txtComentario.Text;
-                            compra.IdUsuario = "elish";
+                            compra.IdUsuario = "Lrivas30";
+                            compra.Anulado = false;
+                            compra.Motivo = "";
                             db.COMPRAS.Add(compra);
                             db.SaveChanges();
 
+                            int idproductoAcrtualizar;
                             for (int i = 0; i < dataGridView1.RowCount - 1; i++)
                             {
                               
@@ -152,9 +159,10 @@ namespace PuntoDeVenta.Compras
                                 db.SaveChanges();
                                 
                                
-                                // aqui se hace el uppdate la campo  existencia  del produto
+                                // aqui se hace el update la campo  existencia  del produto
                                 ModelDB.PRODUCTOS product = new ModelDB.PRODUCTOS();
-                                product = db.PRODUCTOS.Where(x => x.idProductos == int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString())).Single(); 
+                                idproductoAcrtualizar = int.Parse(dataGridView1.Rows[i].Cells["codigo"].Value.ToString());
+                                product = db.PRODUCTOS.Where(x => x.idProductos == idproductoAcrtualizar).Single(); 
                                 product.existencia+= int.Parse(dataGridView1.Rows[i].Cells["cantida"].Value.ToString());                             
                                 db.SaveChanges();
 
@@ -164,19 +172,19 @@ namespace PuntoDeVenta.Compras
                                 vence.fecha = Convert.ToDateTime(dataGridView1.Rows[i].Cells["fechaVencimiento"].Value.ToString());
                                 db.VENCIMIENTOS.Add(vence);
                                 db.SaveChanges();
-
-                            };
-                           
+                                
+                            };                       
                         }
-
                         tr.Complete();
                         MessageBox.Show("Transación exitosa");
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("Error en la transación");
-                        throw;
+                       
                     }
+
+
                 }//fin transactions
                
 
