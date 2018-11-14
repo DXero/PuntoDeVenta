@@ -88,5 +88,28 @@ namespace PuntoDeVenta.Menu_principal
             Codig_de_barra.Codigo_de_Barra CodigoBarra = new  Codig_de_barra.Codigo_de_Barra();
             CodigoBarra.Show();
         }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pocaExistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.Poca_Existencia poca_Exist = new Reportes.Poca_Existencia();
+            poca_Exist.Show();
+        }
+
+        private void ingresoYEgresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.ingreso_y_egresos ingresos_egresos = new Reportes.ingreso_y_egresos();
+            ingresos_egresos.Show();
+        }
+
+        private void ventasSemanalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.Reporte_de_ventas_semanal ventas_semanal = new Reportes.Reporte_de_ventas_semanal();
+            ventas_semanal.Show();
+        }
     }
 }

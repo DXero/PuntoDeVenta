@@ -43,10 +43,13 @@
             this.registrarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarCodigoDeBarraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarCodigoDeBarraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pocaExistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresoYEgresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasSemanalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,6 +179,13 @@
             this.verProductosToolStripMenuItem.Text = "Ver productos";
             this.verProductosToolStripMenuItem.Click += new System.EventHandler(this.verProductosToolStripMenuItem_Click);
             // 
+            // generarCodigoDeBarraToolStripMenuItem
+            // 
+            this.generarCodigoDeBarraToolStripMenuItem.Name = "generarCodigoDeBarraToolStripMenuItem";
+            this.generarCodigoDeBarraToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.generarCodigoDeBarraToolStripMenuItem.Text = "Generar codigo de barra";
+            this.generarCodigoDeBarraToolStripMenuItem.Click += new System.EventHandler(this.generarCodigoDeBarraToolStripMenuItem_Click);
+            // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -191,18 +201,37 @@
             this.registrarProveedoresToolStripMenuItem.Text = "Registrar proveedores";
             this.registrarProveedoresToolStripMenuItem.Click += new System.EventHandler(this.registrarProveedoresToolStripMenuItem_Click);
             // 
-            // generarCodigoDeBarraToolStripMenuItem
-            // 
-            this.generarCodigoDeBarraToolStripMenuItem.Name = "generarCodigoDeBarraToolStripMenuItem";
-            this.generarCodigoDeBarraToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.generarCodigoDeBarraToolStripMenuItem.Text = "Generar codigo de barra";
-            this.generarCodigoDeBarraToolStripMenuItem.Click += new System.EventHandler(this.generarCodigoDeBarraToolStripMenuItem_Click);
-            // 
             // reportesToolStripMenuItem
             // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pocaExistenciaToolStripMenuItem,
+            this.ingresoYEgresosToolStripMenuItem,
+            this.ventasSemanalToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.reportesToolStripMenuItem.Text = "Reportes ";
+            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
+            // 
+            // pocaExistenciaToolStripMenuItem
+            // 
+            this.pocaExistenciaToolStripMenuItem.Name = "pocaExistenciaToolStripMenuItem";
+            this.pocaExistenciaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.pocaExistenciaToolStripMenuItem.Text = "Poca Existencia";
+            this.pocaExistenciaToolStripMenuItem.Click += new System.EventHandler(this.pocaExistenciaToolStripMenuItem_Click);
+            // 
+            // ingresoYEgresosToolStripMenuItem
+            // 
+            this.ingresoYEgresosToolStripMenuItem.Name = "ingresoYEgresosToolStripMenuItem";
+            this.ingresoYEgresosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ingresoYEgresosToolStripMenuItem.Text = "Ingresos y Egresos";
+            this.ingresoYEgresosToolStripMenuItem.Click += new System.EventHandler(this.ingresoYEgresosToolStripMenuItem_Click);
+            // 
+            // ventasSemanalToolStripMenuItem
+            // 
+            this.ventasSemanalToolStripMenuItem.Name = "ventasSemanalToolStripMenuItem";
+            this.ventasSemanalToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ventasSemanalToolStripMenuItem.Text = "Ventas Semanal";
+            this.ventasSemanalToolStripMenuItem.Click += new System.EventHandler(this.ventasSemanalToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -211,7 +240,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuPrincipal";
             this.Text = "MenuPrincipal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
@@ -243,5 +272,8 @@
         private System.Windows.Forms.ToolStripMenuItem registrarProveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarCodigoDeBarraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pocaExistenciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresoYEgresosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasSemanalToolStripMenuItem;
     }
 }
