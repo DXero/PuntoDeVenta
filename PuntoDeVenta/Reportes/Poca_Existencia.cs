@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace PuntoDeVenta.Reportes
 {
-    public partial class Reporte_de_ventas_semanal : Form
+    public partial class Poca_Existencia : Form
     {
-        public Reporte_de_ventas_semanal()
+        public Poca_Existencia()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Poca_Existencia_Load(object sender, EventArgs e)
         {
 
         }
