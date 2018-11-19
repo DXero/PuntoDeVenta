@@ -138,8 +138,8 @@ namespace PuntoDeVenta.Productos
                 producto.activo = ck_activo.Checked;
                 producto.codigoBarra = txt_Codigo.Text;
                 producto.descripcion = txt_Descripcion.Text;
-                producto.precio = int.Parse(txt_Precio.Text);
-                producto.costo = int.Parse(txt_Costo.Text);
+                producto.precio = float.Parse(txt_Precio.Text);
+                producto.costo = float.Parse(txt_Costo.Text);
                 producto.idCategoria = new Contexto().CATEGORIA.Where(st => st.descripcion == cb_Categoria.SelectedItem.ToString()).First().idCategoria;
                 producto.idDescuentos = new Contexto().DESCUENTOS.Where(st => st.descripcion == cb_Descuento.SelectedItem.ToString()).First().idDescuento;
                 mod.SaveChanges(); Close();
